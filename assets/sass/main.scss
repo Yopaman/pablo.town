@@ -1,0 +1,156 @@
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Regular.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Regular.woff2") format("woff2");
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Bold.woff2") format("woff2");
+  font-style: oblique;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Bold") format("woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Regular.woff2") format("woff2");
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Bold.woff2") format("woff2");
+  font-style: oblique;
+  font-weight: bold;
+}
+
+@import "catppuccin_mocha";
+
+$accent: $mauve;
+
+body {
+  font-family: "geist-mono";
+  background-color: $crust;
+  color: $text;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  margin: 0;
+}
+
+header {
+  nav {
+    text-align: center;
+    //padding-top: 10px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 75%;
+
+      .nav-item {
+        flex-grow: 1;
+        flex-basis: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    h1 {
+      color: $accent;
+      font-size: 5em;
+      font-style: oblique;
+      text-decoration: underline;
+      font-weight: normal;
+      transition: text-shadow 100ms ease-out;
+    }
+
+    h1:hover {
+      text-shadow: rgba($accent, 0.9) 0px 0px 39px;
+    }
+
+    a:not(:has(h1)) {
+      font-size: 1.8em;
+
+      &:before {
+        content: "./";
+        color: $overlay0;
+      }
+
+      &:hover {
+        text-decoration: underline;
+        text-shadow: rgba($text, 0.9) 0px 0px 39px;
+      }
+    }
+  }
+}
+
+section#first {
+  position: relative;
+  width: 100%;
+  flex: 1; // Grow under the header
+  display: flex; //
+  flex-direction: column; //
+  align-items: center; // Center the info-box
+  justify-content: center; //
+  overflow: hidden; // Hide bottom of background
+
+  // Info box
+  article {
+    height: 50vh;
+    width: 50%;
+    background-color: rgba($base, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid $accent;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: box-shadow 100ms ease-out;
+
+    &:hover {
+      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    color: $surface0;
+    font-family: "monospace";
+    font-size: 4em;
+  }
+}
