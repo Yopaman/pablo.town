@@ -1,0 +1,22 @@
+{{ $txt := resources.Get "ascii/background.txt" }}
+{{ $text := $txt.Content }}
+{{- if strings.HasPrefix $text "\uFEFF" -}}
+    {{- $text = strings.TrimPrefix $text "\uFEFF" -}}
+{{- end -}}
+
+{{ $charsToWrap := slice "*" "+" "." "°" "," "`" "'" "\""}} 
+
+{{- if strings.HasPrefix $text "\n" -}}
+    {{- $text = strings.TrimPrefix $text "\n" -}}
+{{- end -}}
+
+{{- $chars := split $text "" -}}
+{{- $output := "" -}}
+{{- range $i, $c := $chars -}}
+    {{- if in $charsToWrap $c -}}
+        {{- $output = printf "%s<span class=\"glow-toggle\">%s</span>" $output $c -}}
+    {{- else -}}
+        {{- $output = printf "%s%s" $output $c -}}
+    {{- end -}}
+{{- end -}}
+{{- $output | safeHTML -}}

@@ -67,6 +67,8 @@ a:hover {
 }
 
 header {
+  z-index: 999;
+
   nav {
     text-align: center;
     //padding-top: 10px;
@@ -129,7 +131,8 @@ section#home {
   flex-direction: column; //
   align-items: center; // Center the info-box
   justify-content: center; //
-  overflow: hidden;       // Hide bottom of background
+  overflow: hidden; // Hide bottom of background
+  padding-top: 30px;
 
   // Info box
   article {
@@ -141,11 +144,42 @@ section#home {
     border: 1px solid $accent;
     border-radius: 5px;
     padding: 30px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: box-shadow 100ms ease-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    pre {
+      margin: 0;
+    }
+
+    .command {
+      height: 20%;
+    }
+
+    .command-result {
+      display: flex;
+      flex: 1;
+    }
+
+    .art {
+      width: 20%;
+      overflow: hidden;
+      color: $accent;
+    }
+
+    .specs {
+      width: 80%;
+      padding-left: 50px;
+    }
+
+    .key {
+      color: $accent;
+    }
 
     &:hover {
-      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     }
   }
 
@@ -156,12 +190,21 @@ section#home {
     height: 100vh;
     padding-top: 0;
     margin-top: 0;
-    z-index: -1;
+    cursor: default;
     color: $surface0;
     font-family: "monospace";
     font-size: 3.6em;
-    noscript {
-      margin-top: 0;
+    line-height: 58px;
+    padding-top: 30px;
+
+    //user-select: none;
+    .glow {
+      text-shadow: rgba($text, 0.9) 0px 0px 39px;
+      color: $text;
+    }
+
+    .glow-toggle {
+      cursor: pointer;
     }
   }
 }
@@ -184,20 +227,25 @@ section#list {
     border: 1px solid $overlay0;
     border-radius: 5px;
     transition: border-color 0.1s;
+
     &:hover {
       border-color: $overlay2;
     }
+
     .post-title {
       color: $text;
       font-size: 2em;
       text-decoration: none;
+
       &:hover {
         text-decoration: underline;
       }
     }
+
     .date {
       color: $subtext0;
     }
+
     a.chip {
       border-radius: 50px;
       background-color: rgba($accent, 0.3);
@@ -208,6 +256,7 @@ section#list {
       width: auto;
       color: $text;
       text-decoration: none;
+
       &:hover {
         text-shadow: none;
       }
@@ -227,7 +276,8 @@ section#post {
     border-radius: 5px;
   }
 
-  blockquote.alert, details {
+  blockquote.alert,
+  details {
     margin: 0;
     border-width: 1px;
     border-style: solid;
@@ -241,6 +291,7 @@ section#post {
     padding-bottom: 5px;
     border-color: $accent;
     background-color: rgba($accent, 0.2);
+
     summary {
       cursor: pointer;
     }
@@ -250,29 +301,34 @@ section#post {
     border-color: $yellow;
     background-color: rgba($yellow, 0.2);
   }
+
   blockquote.alert-important {
     border-color: $red;
     background-color: rgba($red, 0.2);
   }
+
   blockquote.alert-note {
     border-color: $sky;
     background-color: rgba($sky, 0.2);
   }
+
   blockquote.alert-tip {
     border-color: $sapphire;
     background-color: rgba($sapphire, 0.2);
   }
+
   blockquote.alert-warning {
     border-color: $yellow;
     background-color: rgba($yellow, 0.2);
   }
+
   blockquote.alert-instructions {
     border-color: $blue;
     background-color: rgba($blue, 0.2);
   }
 
   img {
-    display:block;
+    display: block;
     max-width: 100%;
     max-height: 900px;
     width: auto;

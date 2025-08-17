@@ -1,26 +1,18 @@
 {{ define "main" }}
 <section id="home">
-    <article class="infos">{{ .Content }}</article>
-    <pre class="background" contenteditable="false">
- *        *       '       .       .  "    .      +  *      +        .     +         
-     .                                                    *      *             *    
-             *    +      *       *       *                         °                
-  *    `                                      .                               ,     
-                   .        .          °                      *                     
-     .                                               `             *                
-             °                      .         ,              °           ,          
-        *             *                                                             
-                                                                                    
-             °                ,        +           *              .             .   
-                                                                                    
-     *                              .                        °                      
-                   +                                    ,             °             
-            *                              *                                 *      
-                        *                                                           
-                                                   .             .       *          
-                                                        ,             °             
-             *           *       *       *                         °                
-             °                ,                    *              .             .   
-</pre>
+    <pre class="background" contenteditable="false">{{ partial "background.html" . }}</pre>
+<article class="infos">
+  <pre class="command">[user@pablo.town ~]$ screenfetch</pre>
+  <div class="command-result">
+    <pre class="art">{{ (resources.Get "ascii/screenfetch.txt").Content }}</pre>
+    <pre class="specs"><strong class="key"><br/>user</strong><strong>@</strong><strong class="key">pablo.town</strong><br/>---------<br/>
+    {{- range $element := .Site.Data.infos.infos -}}
+        <strong class="key">{{ $element.key }}</strong>: {{ $element.value }}<br/>
+    {{- end -}}
+    </pre>
+  </div>
+</article>
 </section>
+{{ $homeScript := resources.Get "js/home.js" }}
+<script src="{{ $homeScript.RelPermalink }}"></script>
 {{ end }}
