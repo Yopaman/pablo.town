@@ -1,3 +1,14 @@
 baseURL = 'https://pablo.town/'
 languageCode = 'en-us'
 title = 'pablo.town'
+disablePathToLower = true
+
+[taxonomies]
+category = ["categories"]
+tag = ["tags"]
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.highlight]
+style = 'catppuccin-mocha'

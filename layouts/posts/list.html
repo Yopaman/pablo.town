@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section id="list">
+  <h1>{{ .Title }}</h1>
+  {{ range .Site.RegularPages }}
+    <article class="post" onclick="">
+      <a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <p class="date">{{ .Page.Date | time.Format ":date_medium" }}</p>
+      {{ range .Params.tags }}
+    <a class="chip tag" href={{ "tag/" | absURL }}{{ . | urlize }}>{{ . }}</a>
+      {{ end }}
+    </article>
+  {{ end }}
+</section>
+{{ end }}

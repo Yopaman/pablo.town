@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: geist-mono;
-  src: url("/fonts/GeistMono-Bold") format("woff2");
+  src: url("/fonts/GeistMono-Bold.woff2") format("woff2");
   font-weight: bold;
 }
 
@@ -62,6 +62,10 @@ body {
   margin: 0;
 }
 
+a:hover {
+  text-shadow: rgba($text, 0.9) 0px 0px 39px;
+}
+
 header {
   nav {
     text-align: center;
@@ -74,11 +78,11 @@ header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 75%;
+      width: 60%;
 
       .nav-item {
-        flex-grow: 1;
-        flex-basis: 0;
+        //flex-grow: 1;
+        //flex-basis: 0;
         background-color: rgba(0, 0, 0, 0);
       }
     }
@@ -117,7 +121,7 @@ header {
   }
 }
 
-section#first {
+section#home {
   position: relative;
   width: 100%;
   flex: 1; // Grow under the header
@@ -125,16 +129,18 @@ section#first {
   flex-direction: column; //
   align-items: center; // Center the info-box
   justify-content: center; //
-  overflow: hidden; // Hide bottom of background
+  overflow: hidden;       // Hide bottom of background
 
   // Info box
   article {
+    font-size: 1.6em;
     height: 50vh;
     width: 50%;
     background-color: rgba($base, 0.5);
     backdrop-filter: blur(10px);
     border: 1px solid $accent;
     border-radius: 5px;
+    padding: 30px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: box-shadow 100ms ease-out;
 
@@ -148,9 +154,135 @@ section#first {
     top: 0;
     width: 100%;
     height: 100vh;
+    padding-top: 0;
+    margin-top: 0;
     z-index: -1;
     color: $surface0;
     font-family: "monospace";
-    font-size: 4em;
+    font-size: 3.6em;
+    noscript {
+      margin-top: 0;
+    }
+  }
+}
+
+section#list {
+  font-family: "geist";
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+  h1 {
+    font-family: "geist-mono";
+  }
+
+  article.post {
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: $base;
+    border: 1px solid $overlay0;
+    border-radius: 5px;
+    transition: border-color 0.1s;
+    &:hover {
+      border-color: $overlay2;
+    }
+    .post-title {
+      color: $text;
+      font-size: 2em;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .date {
+      color: $subtext0;
+    }
+    a.chip {
+      border-radius: 50px;
+      background-color: rgba($accent, 0.3);
+      padding-top: 2px;
+      padding-bottom: 2px;
+      padding-left: 7px;
+      padding-right: 7px;
+      width: auto;
+      color: $text;
+      text-decoration: none;
+      &:hover {
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+section#post {
+  width: 60%;
+  margin: auto;
+  font-family: geist;
+  font-size: 18px;
+
+  code:not(pre code) {
+    background-color: $base;
+    border: 1px solid $surface0;
+    border-radius: 5px;
+  }
+
+  blockquote.alert, details {
+    margin: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  details {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-color: $accent;
+    background-color: rgba($accent, 0.2);
+    summary {
+      cursor: pointer;
+    }
+  }
+
+  blockquote.alert-caution {
+    border-color: $yellow;
+    background-color: rgba($yellow, 0.2);
+  }
+  blockquote.alert-important {
+    border-color: $red;
+    background-color: rgba($red, 0.2);
+  }
+  blockquote.alert-note {
+    border-color: $sky;
+    background-color: rgba($sky, 0.2);
+  }
+  blockquote.alert-tip {
+    border-color: $sapphire;
+    background-color: rgba($sapphire, 0.2);
+  }
+  blockquote.alert-warning {
+    border-color: $yellow;
+    background-color: rgba($yellow, 0.2);
+  }
+  blockquote.alert-instructions {
+    border-color: $blue;
+    background-color: rgba($blue, 0.2);
+  }
+
+  img {
+    display:block;
+    max-width: 100%;
+    max-height: 900px;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  div.highlight pre {
+    border-radius: 5px;
+    padding: 20px;
+    overflow: scroll;
   }
 }
