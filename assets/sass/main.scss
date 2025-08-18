@@ -172,6 +172,7 @@ section#home {
     .specs {
       width: 80%;
       padding-left: 50px;
+      text-wrap-mode: wrap;
     }
 
     .key {
@@ -341,4 +342,63 @@ section#post {
     padding: 20px;
     overflow: scroll;
   }
+}
+
+
+$layout-breakpoint-small: 960px;
+
+@media (max-width: $layout-breakpoint-small) {
+  header {
+    nav {
+
+      ul {
+        width: 100%;
+        justify-content: space-evenly;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      a:not(:has(h1)) {
+        font-size: 1em;
+
+        &:before {
+          content: "./";
+        }
+      }
+    }
+  }
+
+  section#home {
+    justify-content: flex-start;
+
+    article {
+      width: 80%;
+      margin-top: 20%;
+
+      .command span {
+        display: none;
+      }
+
+      .command:after {
+        content: '$ screenfetch';
+      }
+
+      .art {
+        display: none;
+      }
+
+      .specs {
+        width: 100%;
+        padding-left: 0px;
+      }
+    }
+  }
+
+  section#post {
+    width: 90%;
+  }
+
+
 }
