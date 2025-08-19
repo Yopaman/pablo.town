@@ -7,7 +7,7 @@
     <pre class="art">{{ (resources.Get "ascii/screenfetch.txt").Content }}</pre>
     <pre class="specs"><strong class="key"><br/>user</strong><strong>@</strong><strong class="key">pablo.town</strong><br/>---------<br/>
     {{- range $element := .Site.Data.infos.infos -}}
-        <strong class="key">{{ $element.key }}</strong>: {{ $element.value }}<br/>
+        <strong class="key">{{ $element.key }}</strong>: {{ $element.value | safe.HTML }}<br/>
     {{- end -}}
     </pre>
   </div>

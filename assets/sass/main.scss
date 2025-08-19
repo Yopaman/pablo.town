@@ -64,6 +64,10 @@ body {
   margin: 0;
 }
 
+a {
+  color: $sky;
+}
+
 a:hover {
   text-shadow: rgba($text, 0.9) 0px 0px 39px;
 }
@@ -73,6 +77,22 @@ a:visited {
 
   &:hover {
     text-shadow: rgba($accent, 0.9) 0px 0px 39px;
+  }
+}
+
+a.chip {
+  border-radius: 50px;
+  background-color: rgba($accent, 0.3);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 7px;
+  padding-right: 7px;
+  width: auto;
+  color: $text;
+  text-decoration: none;
+
+  &:hover {
+    text-shadow: none;
   }
 }
 
@@ -128,6 +148,10 @@ header {
       &:hover {
         text-decoration: underline;
         text-shadow: rgba($text, 0.9) 0px 0px 39px;
+      }
+
+      &:visited {
+        color: $text;
       }
     }
   }
@@ -257,21 +281,7 @@ section#list {
       color: $subtext0;
     }
 
-    a.chip {
-      border-radius: 50px;
-      background-color: rgba($accent, 0.3);
-      padding-top: 2px;
-      padding-bottom: 2px;
-      padding-left: 7px;
-      padding-right: 7px;
-      width: auto;
-      color: $text;
-      text-decoration: none;
 
-      &:hover {
-        text-shadow: none;
-      }
-    }
   }
 }
 
