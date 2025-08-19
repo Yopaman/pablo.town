@@ -1,5 +1,5 @@
 +++
-date = '2025-01-02'
+date = '2025-06-30'
 draft = false
 title = '[Shutlock 2025] Not Fair'
 tags = ['ctf-writeup', 'reverse-engineering', 'english']

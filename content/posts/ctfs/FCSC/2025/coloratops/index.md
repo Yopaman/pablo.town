@@ -1,5 +1,5 @@
 +++
-date = '2025-01-01'
+date = '2025-04-27'
 draft = false
 title = '[FCSC 2025] Coloratops'
 tags = ['ctf-writeup', 'reverse-engineering', 'english']
