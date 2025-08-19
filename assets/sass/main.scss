@@ -217,10 +217,6 @@ section#list {
   margin-right: auto;
   display: block;
 
-  h1 {
-    font-family: "geist-mono";
-  }
-
   article.post {
     padding: 20px;
     margin-bottom: 10px;
@@ -357,7 +353,7 @@ $layout-breakpoint-small: 960px;
       }
 
       h1 {
-        font-size: 2em;
+        font-size: 2.5em;
       }
 
       a:not(:has(h1)) {
@@ -392,6 +388,20 @@ $layout-breakpoint-small: 960px;
       .specs {
         width: 100%;
         padding-left: 0px;
+      }
+    }
+  }
+
+  section#list {
+    width: 90%;
+
+    h1 {
+      font-size: 1.7;
+    }
+
+    article.post {
+      .post-title {
+        font-size: 1.6em;
       }
     }
   }
