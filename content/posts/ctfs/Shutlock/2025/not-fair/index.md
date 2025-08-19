@@ -128,7 +128,7 @@ After that it checks for the win condition again. If the player win, it calls a 
 
 Now we know what to do to ge the flag : find a sequence of moves that win the game. We know that the grid is intially like this :
 
-```
+```text
 0000000
 0000000
 0000000
@@ -157,7 +157,7 @@ If the first move is something else than 'b', it will create ennemy moves that a
 
 ![Pasted image 20250626001222](img/Pasted%20image%2020250626001222.png)
 
-```
+```text
 turn  me  ennemy   
 0:    b   e
 1:    f   d

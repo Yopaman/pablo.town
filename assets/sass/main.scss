@@ -322,6 +322,10 @@ section#post {
     }
   }
 
+  blockquote {
+    overflow-x: scroll;
+  }
+
   blockquote.alert-caution {
     border-color: $yellow;
     background-color: rgba($yellow, 0.2);

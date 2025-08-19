@@ -453,7 +453,7 @@ else:
 
 First, we get the color of each glyph with the `fonttools` python library, then we can shape the text with [harfbuzz](https://github.com/harfbuzz/harfbuzz) to get the correct glyph substitutions, and we can compare the colors to the color sequence that validate the flag.
 
-```
+```text
 Trying : FCSC{0000000000000000000000000000000000000000000000000000000000}
 Trying : FCSC{000000000000000000000000000000000000000000000000000000000d}
 Trying : FCSC{000000000000000000000000000000000000000000000000000000000d}
