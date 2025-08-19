@@ -13,8 +13,12 @@
       "value": "Cybersecurity, Computer Science, Game Development"
     },
     {
-      "key": "Networks",
-      "value": "<a href=\"https://github.com/yopaman\">Github</a>"
+      "key": "Links",
+      "value": "<a href=\"https://github.com/yopaman\">Github</a>, <a href=\"https://github.com/yopaman\">Github</a>"
+    },
+    {
+      "key": "Email",
+      "value": "contact[at]this_domain"
     }
   ]
 }

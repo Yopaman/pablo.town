@@ -172,6 +172,8 @@ section#home {
   article {
     font-size: 1.6em;
     height: 50vh;
+
+    margin-bottom: 20%;
     width: 50%;
     background-color: rgba($base, 0.5);
     backdrop-filter: blur(10px);
@@ -254,6 +256,8 @@ section#list {
   margin-left: auto;
   margin-right: auto;
   display: block;
+
+  height: 100vh;
 
   article.post {
     padding: 20px;
@@ -364,6 +368,12 @@ section#post {
   }
 }
 
+footer {
+  text-align: center;
+  width: 100%;
+  height: 60px;
+}
+
 
 $layout-breakpoint-small: 960px;
 
@@ -396,6 +406,7 @@ $layout-breakpoint-small: 960px;
     article {
       width: 80%;
       margin-top: 20%;
+      margin-bottom: 0;
 
       .command span {
         display: none;
