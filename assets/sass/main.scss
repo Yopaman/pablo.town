@@ -50,8 +50,10 @@
 
 @import "catppuccin_mocha";
 
+// Variables
 $accent: $mauve;
 
+// Default styles
 body {
   font-family: "geist-mono";
   background-color: $crust;
@@ -64,6 +66,14 @@ body {
 
 a:hover {
   text-shadow: rgba($text, 0.9) 0px 0px 39px;
+}
+
+a:visited {
+  color: $accent;
+
+  &:hover {
+    text-shadow: rgba($accent, 0.9) 0px 0px 39px;
+  }
 }
 
 header {
@@ -206,6 +216,10 @@ section#home {
 
     .glow-toggle {
       cursor: pointer;
+
+      &:hover {
+        text-shadow: rgba($subtext0, 0.9) 0px 0px 39px;
+      }
     }
   }
 }

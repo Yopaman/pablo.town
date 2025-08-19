@@ -10,7 +10,11 @@
     },
     {
       "key": "Interests",
-      "value": "Computer Science, Cybersecurity, Game Development"
+      "value": "Cybersecurity, Computer Science, Game Development"
+    },
+    {
+      "key": "Networks",
+      "value": ["https://github.com/yopaman"]
     }
   ]
 }
