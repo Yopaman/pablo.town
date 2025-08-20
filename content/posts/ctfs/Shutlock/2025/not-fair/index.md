@@ -9,10 +9,10 @@ tags = ['ctf-writeup', 'reverse-engineering', 'english']
 > 
 > 🇫🇷 Un adversaire redoutable se cache dans ce binaire. Votre but est de le vaincre. Mais prenez garde... la vie n'est pas toujours juste.
 > 
-> 🇬🇧 An impressive adversary lurks within this binary. Your goal is to beat it, but take care... live is not always fair.
+> 🇬🇧 An impressive adversary lurks within this binary. Your goal is to beat it, but take care... life is not always fair.
 
 
-The binary does not do anything when executed without an argument. With a random string as an argument, we get a mesage : `You lost :/`. 
+The provided binary does not do anything when executed without an argument. With a random string as an argument, we get a mesage : `You lost :/`. 
 
 Let's decompile it. 
 
