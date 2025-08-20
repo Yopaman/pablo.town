@@ -9,7 +9,7 @@
     {{- range $element := .Site.Data.infos.infos -}}
         <strong class="key">{{ $element.key }}</strong>: {{ $element.value | safe.HTML }}<br/>
     {{- end -}}
-    <a href="https://localhost:1313/me">learn more</a>
+    <a href="/me">learn more</a>
     </pre>
   </div>
 </article>

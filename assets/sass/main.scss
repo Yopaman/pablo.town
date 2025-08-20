@@ -73,20 +73,13 @@ header footer {
   flex-shrink: 1;
 }
 
-a {
-  color: $sky;
+a,
+a:visited {
+  color: $accent;
 }
 
 a:hover {
   text-shadow: rgba($text, 0.9) 0px 0px 39px;
-}
-
-a:visited {
-  color: $accent;
-
-  &:hover {
-    text-shadow: rgba($accent, 0.9) 0px 0px 39px;
-  }
 }
 
 a.chip {
