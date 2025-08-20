@@ -75,7 +75,7 @@ header footer {
 
 a,
 a:visited {
-  color: $accent;
+  color: $blue;
 }
 
 a:hover {
@@ -255,6 +255,7 @@ section#home {
 section#home.me {
   .command-result {
     display: block;
+    text-wrap-mode: wrap;
   }
 }
 
