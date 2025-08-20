@@ -11,3 +11,7 @@ disablePathToLower = true
 
 [markup.highlight]
   style = 'catppuccin-mocha'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

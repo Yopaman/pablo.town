@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section id="home" class="me">
+    <pre class="background" contenteditable="false">{{ partial "background.html" . }}</pre>
+<article class="infos">
+  <pre class="command"><span>[user@pablo.town ~]$ whoami</span></pre>
+  <pre class="command-result">{{ .Content }}</pre>
+</article>
+</section>
+{{ $homeScript := resources.Get "js/home.js" }}
+<script src="{{ $homeScript.RelPermalink }}"></script>
+{{ end }}
