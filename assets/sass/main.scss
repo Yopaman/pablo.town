@@ -259,6 +259,12 @@ section#home {
   }
 }
 
+section#home.me {
+  .command-result {
+    display: block;
+  }
+}
+
 section#list {
   font-family: "geist";
   width: 60%;
