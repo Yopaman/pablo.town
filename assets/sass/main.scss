@@ -62,6 +62,15 @@ body {
   flex-direction: column;
   min-height: 100dvh;
   margin: 0;
+  display: flex;
+}
+
+section#list {
+  flex: 1;
+}
+
+header footer {
+  flex-shrink: 1;
 }
 
 a {
@@ -257,7 +266,7 @@ section#list {
   margin-right: auto;
   display: block;
 
-  height: 100vh;
+  //height: 100vh;
 
   article.post {
     padding: 20px;
@@ -373,6 +382,7 @@ section#post {
 }
 
 footer {
+  bottom: 0;
   text-align: center;
   width: 100%;
   height: 60px;
