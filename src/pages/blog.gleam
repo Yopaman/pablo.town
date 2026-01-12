@@ -1,9 +1,9 @@
-import birl
 import components/page
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
 import mork/document
+import tempo
 
 pub fn view(post: Post) -> Element(_) {
   page.page(
@@ -18,7 +18,7 @@ pub type Post {
   Post(
     title: String,
     id: String,
-    date: birl.Time,
+    date: tempo.Date,
     tags: List(String),
     content: document.Document,
   )

@@ -1,4 +1,3 @@
-import birl
 import components/page
 import gleam/list
 import lustre/attribute
@@ -6,6 +5,7 @@ import lustre/element.{type Element}
 import lustre/element/html
 import lustre/event
 import pages/blog
+import tempo/date
 
 pub fn view(title: String, posts: List(blog.Post)) -> Element(_) {
   page.page(
@@ -27,7 +27,7 @@ pub fn view(title: String, posts: List(blog.Post)) -> Element(_) {
                   [html.text(post.title)],
                 ),
                 html.p([attribute.class("date")], [
-                  html.text(post.date |> birl.to_naive_date_string),
+                  html.text(post.date |> date.to_string),
                 ]),
               ]
                 |> list.append(

@@ -1,12 +1,15 @@
-import birl
 import gleam/dict
 import gleam/io
 import gleam/result
 import mork
 import pages/blog
+import simplifile
+import tempo/date
 
 import pages/index.{Infos, Website}
 import pages/list as list_page
+
+import lustre/element.{type Element}
 
 import lustre/ssg
 
@@ -17,7 +20,7 @@ pub fn main() {
       blog.Post(
         "test",
         "test",
-        birl.now(),
+        date.current_local(),
         ["tag1", "tag2"],
         mork.parse("bonjour test test"),
       ),
@@ -28,7 +31,7 @@ pub fn main() {
       blog.Post(
         "test2",
         "test2",
-        birl.now(),
+        date.current_local(),
         ["tag1", "tag2"],
         mork.parse("bonjour2 **test2** test2"),
       ),
@@ -41,7 +44,8 @@ pub fn main() {
       "/",
       index.view(Infos(
         name: "Pablo",
-        birth_date: birl.parse("2002-04-26") |> result.unwrap(birl.unix_epoch),
+        birth_date: date.from_string("2002-04-26")
+          |> result.unwrap(date.unix_epoch),
         interests: ["Cybersecurity", "Computer Science", "Game Development"],
         links: [
           Website("Github", "https://github.com/yopaman"),
@@ -67,6 +71,6 @@ pub fn main() {
   }
 }
 
-fn parse_markdown_files() -> Dict(String, Element) {
-  let assert Ok(files) = simplifiles.
+fn parse_markdown_files() -> dict.Dict(String, Element(_)) {
+  todo
 }

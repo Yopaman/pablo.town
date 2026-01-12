@@ -1,10 +1,11 @@
-import birl
 import gleam/list
 import gleam/result
 import mork
 import mork/document
 import pages/blog
 import simplifile
+import tempo
+import tempo/date
 import tom
 
 pub type FrontMatterError {
@@ -12,7 +13,7 @@ pub type FrontMatterError {
 }
 
 type Frontmatter {
-  Frontmatter(title: String, id: String, date: birl.Time, tags: List(String))
+  Frontmatter(title: String, id: String, date: tempo.Date, tags: List(String))
 }
 
 fn parse_frontmatter(raw_toml: String) -> Result(Frontmatter, tom.GetError) {
@@ -25,7 +26,7 @@ fn parse_frontmatter(raw_toml: String) -> Result(Frontmatter, tom.GetError) {
   Ok(Frontmatter(
     title: title,
     id: id,
-    date: date |> birl.from_naive |> result.unwrap(birl.unix_epoch),
+    date: date |> birl.from_naive |> result.unwrap(date.unix_epoch()),
     tags: tags_string,
   ))
 }

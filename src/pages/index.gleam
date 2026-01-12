@@ -1,4 +1,3 @@
-import birl
 import components/page
 import gleam/list
 import gleam/string
@@ -6,6 +5,8 @@ import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
 import simplifile
+import tempo
+import tempo/date
 
 pub fn view(infos: Infos) -> Element(_) {
   page.page(
@@ -37,7 +38,7 @@ pub fn view(infos: Infos) -> Element(_) {
               |> list.append(key_values("Hostname", [html.text(infos.name)]))
               |> list.append(
                 key_values("Uptime", [
-                  html.text(infos.birth_date |> birl.to_naive_date_string),
+                  html.text(infos.birth_date |> date.to_string),
                 ]),
               )
               |> list.append(key_values(
@@ -88,7 +89,7 @@ fn key_values(key: String, values: List(Element(_))) -> List(Element(_)) {
 pub type Infos {
   Infos(
     name: String,
-    birth_date: birl.Time,
+    birth_date: tempo.Date,
     interests: List(String),
     links: List(Website),
     email: String,
