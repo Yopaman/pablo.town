@@ -2,10 +2,9 @@ import components/page
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
-import mork/document
 import tempo
 
-pub fn view(post: Post) -> Element(_) {
+pub fn view(post: Post(_)) -> Element(_) {
   page.page(
     post.title,
     html.section([attribute.id("page")], [
@@ -14,17 +13,17 @@ pub fn view(post: Post) -> Element(_) {
   )
 }
 
-pub type Post {
+pub type Post(a) {
   Post(
     title: String,
     id: String,
     date: tempo.Date,
     tags: List(String),
-    content: document.Document,
+    content: List(Element(a)),
   )
 }
 
-pub fn get_post_link(post: Post) -> String {
+pub fn get_post_link(post: Post(_)) -> String {
   "/blog/" <> post.id
 }
 

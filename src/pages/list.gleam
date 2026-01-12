@@ -7,7 +7,7 @@ import lustre/event
 import pages/blog
 import tempo/date
 
-pub fn view(title: String, posts: List(blog.Post)) -> Element(_) {
+pub fn view(title: String, posts: List(blog.Post(_))) -> Element(_) {
   page.page(
     title,
     html.section(
@@ -15,7 +15,7 @@ pub fn view(title: String, posts: List(blog.Post)) -> Element(_) {
       [html.h1([], [html.text(title)])]
         |> list.append(
           posts
-          |> list.map(fn(post: blog.Post) {
+          |> list.map(fn(post: blog.Post(_)) {
             html.article(
               [attribute.class("post"), event.on_click("")],
               [

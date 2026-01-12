@@ -2,6 +2,7 @@ import gleam/dict
 import gleam/io
 import gleam/result
 import mork
+import mork/to_lustre
 import pages/blog
 import simplifile
 import tempo/date
@@ -22,7 +23,7 @@ pub fn main() {
         "test",
         date.current_local(),
         ["tag1", "tag2"],
-        mork.parse("bonjour test test"),
+        mork.parse("bonjour test test") |> to_lustre.to_lustre,
       ),
     ),
 
@@ -33,7 +34,7 @@ pub fn main() {
         "test2",
         date.current_local(),
         ["tag1", "tag2"],
-        mork.parse("bonjour2 **test2** test2"),
+        mork.parse("bonjour2 **test2** test2") |> to_lustre.to_lustre,
       ),
     ),
   ]

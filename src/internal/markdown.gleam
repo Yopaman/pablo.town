@@ -2,6 +2,7 @@ import gleam/list
 import gleam/result
 import mork
 import mork/document
+import mork/to_lustre
 import pages/blog
 import simplifile
 import tempo
@@ -20,18 +21,18 @@ fn parse_frontmatter(raw_toml: String) -> Result(Frontmatter, tom.GetError) {
   let assert Ok(parsed) = tom.parse(raw_toml)
   use title <- result.try(parsed |> tom.get_string(["title"]))
   use id <- result.try(parsed |> tom.get_string(["id"]))
-  use date <- result.try(parsed |> tom.get_string(["date"]))
+  use parsed_date <- result.try(parsed |> tom.get_string(["date"]))
   use tags <- result.try(parsed |> tom.get_array(["tags"]))
   use tags_string <- result.try(tags |> list.try_map(tom.as_string))
   Ok(Frontmatter(
     title: title,
     id: id,
-    date: date |> birl.from_naive |> result.unwrap(date.unix_epoch()),
+    date: parsed_date |> date.from_string |> result.unwrap(date.unix_epoch),
     tags: tags_string,
   ))
 }
 
-pub fn from_markdown_file(path: String) -> blog.Post {
+pub fn from_markdown_file(path: String) -> blog.Post(_) {
   let assert Ok(file_content) = simplifile.read(path)
   let #(frontmatter, content) = mork.split_frontmatter_from_input(file_content)
   let assert Ok(parsed_frontmatter) = parse_frontmatter(frontmatter)
@@ -40,6 +41,6 @@ pub fn from_markdown_file(path: String) -> blog.Post {
     id: parsed_frontmatter.id,
     date: parsed_frontmatter.date,
     tags: parsed_frontmatter.tags,
-    content: content,
+    content: mork.parse(content) |> to_lustre.to_lustre,
   )
 }
