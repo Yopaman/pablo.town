@@ -1,0 +1,49 @@
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Regular.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Regular.woff2") format("woff2");
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: geist;
+  src: url("/fonts/Geist-Bold.woff2") format("woff2");
+  font-style: oblique;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Regular.woff2") format("woff2");
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: geist-mono;
+  src: url("/fonts/GeistMono-Bold.woff2") format("woff2");
+  font-style: oblique;
+  font-weight: bold;
+}
