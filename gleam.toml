@@ -14,13 +14,12 @@ version = "1.0.0"
 
 [dependencies]
 gleam_stdlib = ">= 0.44.0 and < 2.0.0"
-lustre_ssg = ">= 0.11.0 and < 1.0.0"
 lustre = ">= 5.4.0 and < 6.0.0"
 simplifile = ">= 2.3.2 and < 3.0.0"
 mork = ">= 1.11.0 and < 2.0.0"
-tom = ">= 1.1.1 and < 2.0.0"
 gtempo = ">= 7.2.2 and < 8.0.0"
 mork_to_lustre = ">= 0.1.0 and < 1.0.0"
+lustre_ssg = { git = "https://github.com/lustre-labs/ssg.git", ref = "main" }
 
 [dev-dependencies]
 gleeunit = ">= 1.0.0 and < 2.0.0"
