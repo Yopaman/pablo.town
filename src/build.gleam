@@ -1,6 +1,10 @@
+import filepath
 import gleam/dict
 import gleam/io
+import gleam/list
 import gleam/result
+import gleam/string
+import internal/markdown
 import mork
 import mork/to_lustre
 import pages/blog
@@ -39,6 +43,9 @@ pub fn main() {
     ),
   ]
 
+  let posts = parse_markdown_files()
+  // echo posts
+
   let build =
     ssg.new("./dist")
     |> ssg.add_static_route(
@@ -56,11 +63,9 @@ pub fn main() {
       )),
     )
     |> ssg.add_static_dir("./static")
-    |> ssg.add_static_route(
-      "/blog/index",
-      list_page.view("posts", dict.from_list(test_posts) |> dict.values),
-    )
-    |> ssg.add_dynamic_route("/blog", dict.from_list(test_posts), blog.view)
+    |> ssg.add_static_route("/blog", list_page.view("posts", posts))
+    |> add_posts_routes("/blog", posts)
+    |> ssg.use_index_routes
     |> ssg.build
 
   case build {
@@ -70,8 +75,51 @@ pub fn main() {
       io.println("Build failed!")
     }
   }
+
+  // HACK: todo: pull request to lustre/ssg to have a better way to do this
+  case add_posts_imgs(posts) {
+    Ok(_) -> io.println("Images added successfully!")
+    Error(e) -> {
+      echo e
+      io.println("Error adding images!")
+    }
+  }
 }
 
-fn parse_markdown_files() -> dict.Dict(String, Element(_)) {
-  todo
+fn parse_markdown_files() -> List(blog.Post(_)) {
+  let assert Ok(files) = simplifile.get_files("data/posts")
+  files
+  |> list.filter(fn(e) { e |> string.ends_with(".md") })
+  |> list.map(fn(e) { e |> markdown.from_markdown_file })
 }
+
+fn add_posts_routes(
+  config: ssg.Config(_, _, _),
+  path: String,
+  posts: List(blog.Post(_)),
+) -> ssg.Config(_, _, _) {
+  posts
+  |> list.fold(config, fn(config, post) {
+    config |> ssg.add_static_route(path <> "/" <> post.id, blog.view(post))
+  })
+}
+
+fn add_posts_imgs(posts: List(blog.Post(_))) {
+  posts
+  |> list.map(fn(p) { "data/posts/" <> p.id <> "/img" })
+  |> list.try_map(fn(path) {
+    simplifile.copy_directory(
+      path,
+      "dist/blog/"
+        <> path |> filepath.split() |> list.drop(2) |> string.join("/"),
+    )
+  })
+}
+// fn get_all_images(path: String) -> List(String) {
+//   let assert Ok(paths) = simplifile.get_files(path)
+//   paths
+//   |> list.filter(fn(ext) {
+//     [".png", ".jpg", ".jpeg", ".gif"]
+//     |> list.fold(True, fn(acc, e) { string.ends_with(ext, e) || acc })
+//   })
+// }

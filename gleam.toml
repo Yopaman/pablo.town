@@ -20,6 +20,8 @@ mork = ">= 1.11.0 and < 2.0.0"
 gtempo = ">= 7.2.2 and < 8.0.0"
 mork_to_lustre = ">= 0.1.0 and < 1.0.0"
 lustre_ssg = { git = "https://github.com/lustre-labs/ssg.git", ref = "main" }
+tom = ">= 1.1.1 and < 2.0.0"
+filepath = ">= 1.1.2 and < 2.0.0"
 
 [dev-dependencies]
 gleeunit = ">= 1.0.0 and < 2.0.0"

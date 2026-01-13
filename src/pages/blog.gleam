@@ -1,4 +1,5 @@
 import components/page
+import gleam/list
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
@@ -7,9 +8,13 @@ import tempo
 pub fn view(post: Post(_)) -> Element(_) {
   page.page(
     post.title,
-    html.section([attribute.id("page")], [
-      html.h1([attribute.class("title")], [html.text(post.title)]),
-    ]),
+    html.section(
+      [attribute.id("post")],
+      [
+        html.h1([attribute.class("title")], [html.text(post.title)]),
+      ]
+        |> list.append(post.content),
+    ),
   )
 }
 

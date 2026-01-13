@@ -13,7 +13,7 @@ pub fn markdown_test() {
   let post = markdown.from_markdown_file("test/fake_article.md")
   let assert Ok(my_date) = date.new(2005, 11, 12)
   assert post
-    == blog.Post("test", "test", my_date, ["tag1", "tag2", "tag3"], [
+    == blog.Post("test", "", my_date, ["tag1", "tag2", "tag3"], [
       html.h1([], [html.text("Hello")]),
       html.text(""),
       html.h2([], [html.text("bonjour")]),

@@ -28,6 +28,7 @@ packages = [
 ]
 
 [requirements]
+filepath = { version = ">= 1.1.2 and < 2.0.0" }
 gleam_stdlib = { version = ">= 0.44.0 and < 2.0.0" }
 gleeunit = { version = ">= 1.0.0 and < 2.0.0" }
 gtempo = { version = ">= 7.2.2 and < 8.0.0" }
@@ -36,3 +37,4 @@ lustre_ssg = { git = "https://github.com/lustre-labs/ssg.git", ref = "main" }
 mork = { version = ">= 1.11.0 and < 2.0.0" }
 mork_to_lustre = { version = ">= 0.1.0 and < 1.0.0" }
 simplifile = { version = ">= 2.3.2 and < 3.0.0" }
+tom = { version = ">= 1.1.1 and < 2.0.0" }

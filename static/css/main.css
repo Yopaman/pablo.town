@@ -262,3 +262,86 @@ section#list {
     }
   }
 }
+
+section#post {
+  width: 60%;
+  margin: auto;
+  font-family: geist;
+  font-size: 18px;
+
+  code:not(pre code) {
+    background-color: var(--base);
+    border: 1px solid var(--surface);
+    border-radius: 5px;
+  }
+
+  blockquote.alert,
+  details {
+    margin: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  details {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-color: var(--accent);
+    background-color: color-mix(in srgb, var(--accent), transparent 80%);
+
+    summary {
+      cursor: pointer;
+    }
+  }
+
+  blockquote {
+    overflow-x: scroll;
+  }
+
+  blockquote.alert-caution {
+    border-color: var(--yellow);
+    background-color: color-mix(in srgb, var(--yellow), transparent 80%);
+  }
+
+  blockquote.alert-important {
+    border-color: var(--red);
+    background-color: color-mix(in srgb, var(--red), transparent 80%);
+  }
+
+  blockquote.alert-note {
+    border-color: var(--sky);
+    background-color: color-mix(in srgb, var(--sky), transparent 80%);
+  }
+
+  blockquote.alert-tip {
+    border-color: var(--sapphire);
+    background-color: color-mix(in srgb, var(--sapphire), transparent 80%);
+  }
+
+  blockquote.alert-warning {
+    border-color: var(--yellow);
+    background-color: color-mix(in srgb, var(--yellow), transparent 80%);
+  }
+
+  blockquote.alert-instructions {
+    border-color: var(--blue);
+    background-color: color-mix(in srgb, var(--blue), transparent 80%);
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 900px;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  div.highlight pre {
+    border-radius: 5px;
+    padding: 20px;
+    overflow: scroll;
+  }
+}
