@@ -142,6 +142,35 @@ section#home {
   padding-top: 30px;
 
   article {
+    radio-picker {
+      position: absolute;
+      top: -15px;
+      font-size: 0.6em;
+
+      label {
+        &:has(input:checked) {
+          background-color: var(--accent);
+          color: var(--base);
+        }
+        border: 1px solid var(--accent);
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        background: #0002;
+        background-color: var(--bg);
+        margin-left: 5px;
+      }
+      input {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+    }
+
+    &:has(#infos:not(:checked)) #infos-tab,
+    &:has(#me:not(:checked)) #me-tab {
+      display: none;
+    }
     font-size: 1.6em;
     height: 50vh;
 

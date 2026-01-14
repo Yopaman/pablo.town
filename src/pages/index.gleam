@@ -17,41 +17,67 @@ pub fn view(infos: Infos) -> Element(_) {
         background(),
       ),
       html.article([attribute.class("infos")], [
-        html.pre([attribute.class("command")], [
-          html.span([], [html.text("[user@pablo.town ~]$ screenfetch")]),
-        ]),
-        html.div([attribute.class("command-result")], [
-          html.pre([attribute.class("art")], [html.text(ascii_art())]),
-          html.pre(
-            [attribute.class("specs")],
-            [
-              html.br([]),
-              html.strong([attribute.class("key")], [html.text("user")]),
-              html.strong([], [html.text("@")]),
-              html.strong([attribute.class("key")], [
-                html.text("pablo.town"),
+        element.element(
+          "radio-picker",
+          [attribute.aria_label("Radio buttons"), attribute.role("radiogroup")],
+          [
+            html.label([], [
+              html.input([
+                attribute.type_("radio"),
+                attribute.name("tabs"),
+                attribute.id("infos"),
+                attribute.checked(True),
               ]),
-              html.br([]),
-              html.text("---------"),
-              html.br([]),
-            ]
-              |> list.append(key_values("Hostname", [html.text(infos.name)]))
-              |> list.append(
-                key_values("Uptime", [
-                  html.text(infos.birth_date |> date.to_string),
+              html.text("infos"),
+            ]),
+            html.label([], [
+              html.input([
+                attribute.type_("radio"),
+                attribute.name("tabs"),
+                attribute.id("me"),
+              ]),
+              html.text("me"),
+            ]),
+          ],
+        ),
+        html.div([attribute.tabindex(0), attribute.id("infos-tab")], [
+          html.pre([attribute.class("command")], [
+            html.span([], [html.text("[user@pablo.town ~]$ screenfetch")]),
+          ]),
+          html.div([attribute.class("command-result")], [
+            html.pre([attribute.class("art")], [html.text(ascii_art())]),
+            html.pre(
+              [attribute.class("specs")],
+              [
+                html.br([]),
+                html.strong([attribute.class("key")], [html.text("user")]),
+                html.strong([], [html.text("@")]),
+                html.strong([attribute.class("key")], [
+                  html.text("pablo.town"),
                 ]),
-              )
-              |> list.append(key_values(
-                "Interests",
-                infos.interests |> list.map(fn(e) { html.text(e) }),
-              ))
-              |> list.append(key_values(
-                "Links",
-                infos.links |> list.map(to_link),
-              ))
-              |> list.append(key_values("Email", [html.text(infos.email)])),
-          ),
+                html.br([]),
+                html.text("---------"),
+                html.br([]),
+              ]
+                |> list.append(key_values("Hostname", [html.text(infos.name)]))
+                |> list.append(
+                  key_values("Uptime", [
+                    html.text(infos.birth_date |> date.to_string),
+                  ]),
+                )
+                |> list.append(key_values(
+                  "Interests",
+                  infos.interests |> list.map(fn(e) { html.text(e) }),
+                ))
+                |> list.append(key_values(
+                  "Links",
+                  infos.links |> list.map(to_link),
+                ))
+                |> list.append(key_values("Email", [html.text(infos.email)])),
+            ),
+          ]),
         ]),
+        html.div([attribute.tabindex(0), attribute.id("me-tab")], []),
       ]),
     ]),
     False,
