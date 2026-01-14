@@ -315,10 +315,86 @@ fn blockquote_to_lustre(
   blocks: List(Block),
   syntax_highlighter syntax_highlighter: glimra.Config(glimra.HasTheme),
 ) -> Element(_) {
-  html.blockquote(
-    [],
-    list.map(blocks, block_to_lustre(cache, doc, _, Loose, syntax_highlighter)),
-  )
+  choose_callout_to_render(cache, doc, blocks, syntax_highlighter)
+}
+
+fn emojify(callout_type: String) -> String {
+  case callout_type {
+    "important" -> "ℹ️"
+    "note" -> "🗒️"
+    "tip" -> "💡"
+    "warning" -> "⚠️"
+    "instructions" -> "📖"
+    _ -> "⚠️"
+  }
+}
+
+fn choose_callout_to_render(
+  cache: Cache,
+  doc: Document,
+  blocks: List(Block),
+  syntax_highlighter syntax_highlighter: glimra.Config(glimra.HasTheme),
+) -> Element(_) {
+  case blocks {
+    [Paragraph(_, inlines), ..blocks_tail] ->
+      case inlines {
+        [Text("["), Text(_), Text("]"), Text("-" <> foldable_title1), ..inlines] ->
+          html.details(
+            [],
+            [
+              html.summary(
+                [],
+                [
+                  html.text(foldable_title1),
+                ]
+                  |> list.append(
+                    list.map(inlines, inline_to_lustre(cache, doc, _)),
+                  ),
+              ),
+            ]
+              |> list.append(
+                list.map(blocks_tail, block_to_lustre(
+                  cache,
+                  doc,
+                  _,
+                  Loose,
+                  syntax_highlighter,
+                )),
+              ),
+          )
+        [Text("["), Text("!" <> callout_type), Text("]"), ..] ->
+          html.blockquote(
+            [attribute.class("alert alert-" <> callout_type)],
+            [
+              html.p([attribute.class("alert-heading")], [
+                html.text(emojify(callout_type) <> " "),
+                html.strong([], [html.text(callout_type |> string.capitalise)]),
+              ]),
+            ]
+              |> list.append(
+                list.map(blocks_tail, block_to_lustre(
+                  cache,
+                  doc,
+                  _,
+                  Loose,
+                  syntax_highlighter,
+                )),
+              ),
+          )
+        _ -> element.none()
+      }
+    _ ->
+      html.blockquote(
+        [],
+        list.map(blocks, block_to_lustre(
+          cache,
+          doc,
+          _,
+          Loose,
+          syntax_highlighter,
+        )),
+      )
+  }
 }
 
 fn paragraph_to_lustre(
