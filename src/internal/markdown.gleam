@@ -2,8 +2,8 @@ import filepath
 import gleam/list
 import gleam/result
 import gleam/string
+import glimra
 import mork
-import mork/document
 import mork/to_lustre
 import pages/blog
 import simplifile
@@ -32,7 +32,10 @@ fn parse_frontmatter(raw_toml: String) -> Result(Frontmatter, tom.GetError) {
   ))
 }
 
-pub fn from_markdown_file(path: String) -> blog.Post(_) {
+pub fn from_markdown_file(
+  path: String,
+  syntax_highlighter syntax_highlighter: glimra.Config(glimra.HasTheme),
+) -> blog.Post(_) {
   let assert Ok(file_content) = simplifile.read(path)
   let id =
     path
@@ -42,11 +45,13 @@ pub fn from_markdown_file(path: String) -> blog.Post(_) {
     |> string.join("/")
   let #(frontmatter, content) = mork.split_frontmatter_from_input(file_content)
   let assert Ok(parsed_frontmatter) = parse_frontmatter(frontmatter)
+  let parsed_content =
+    mork.parse(content) |> to_lustre.to_lustre(syntax_highlighter)
   blog.Post(
     title: parsed_frontmatter.title,
     id: id,
     date: parsed_frontmatter.date,
     tags: parsed_frontmatter.tags,
-    content: mork.parse(content) |> to_lustre.to_lustre,
+    content: parsed_content,
   )
 }

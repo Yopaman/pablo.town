@@ -54,6 +54,7 @@ pub fn view(infos: Infos) -> Element(_) {
         ]),
       ]),
     ]),
+    False,
   )
 }
 

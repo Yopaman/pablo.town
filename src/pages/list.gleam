@@ -46,5 +46,6 @@ pub fn view(title: String, posts: List(blog.Post(_))) -> Element(_) {
           }),
         ),
     ),
+    False,
   )
 }

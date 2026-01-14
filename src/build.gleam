@@ -1,12 +1,11 @@
 import filepath
-import gleam/dict
 import gleam/io
 import gleam/list
 import gleam/result
 import gleam/string
+import glimra
+import glimra/theme
 import internal/markdown
-import mork
-import mork/to_lustre
 import pages/blog
 import simplifile
 import tempo/date
@@ -14,36 +13,14 @@ import tempo/date
 import pages/index.{Infos, Website}
 import pages/list as list_page
 
-import lustre/element.{type Element}
-
 import lustre/ssg
 
 pub fn main() {
-  let test_posts = [
-    #(
-      "test",
-      blog.Post(
-        "test",
-        "test",
-        date.current_local(),
-        ["tag1", "tag2"],
-        mork.parse("bonjour test test") |> to_lustre.to_lustre,
-      ),
-    ),
+  let syntax_highlighter =
+    glimra.new_syntax_highlighter()
+    |> glimra.set_theme(theme.default_theme())
 
-    #(
-      "test2",
-      blog.Post(
-        "test2",
-        "test2",
-        date.current_local(),
-        ["tag1", "tag2"],
-        mork.parse("bonjour2 **test2** test2") |> to_lustre.to_lustre,
-      ),
-    ),
-  ]
-
-  let posts = parse_markdown_files()
+  let posts = parse_markdown_files(syntax_highlighter)
   // echo posts
 
   let build =
@@ -63,6 +40,7 @@ pub fn main() {
       )),
     )
     |> ssg.add_static_dir("./static")
+    |> glimra.add_static_stylesheet(syntax_highlighter: syntax_highlighter)
     |> ssg.add_static_route("/blog", list_page.view("posts", posts))
     |> add_posts_routes("/blog", posts)
     |> ssg.use_index_routes
@@ -86,11 +64,13 @@ pub fn main() {
   }
 }
 
-fn parse_markdown_files() -> List(blog.Post(_)) {
+fn parse_markdown_files(
+  syntax_highlighter syntax_highlighter: glimra.Config(glimra.HasTheme),
+) -> List(blog.Post(_)) {
   let assert Ok(files) = simplifile.get_files("data/posts")
   files
   |> list.filter(fn(e) { e |> string.ends_with(".md") })
-  |> list.map(fn(e) { e |> markdown.from_markdown_file })
+  |> list.map(fn(e) { e |> markdown.from_markdown_file(syntax_highlighter) })
 }
 
 fn add_posts_routes(

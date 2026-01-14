@@ -1,4 +1,6 @@
 import gleeunit
+import glimra
+import glimra/theme
 import lustre/element/html
 import pages/blog
 import tempo/date
@@ -10,7 +12,11 @@ pub fn main() {
 }
 
 pub fn markdown_test() {
-  let post = markdown.from_markdown_file("test/fake_article.md")
+  let syntax_highlighter =
+    glimra.new_syntax_highlighter()
+    |> glimra.set_theme(theme.default_theme())
+  let post =
+    markdown.from_markdown_file("test/fake_article.md", syntax_highlighter)
   let assert Ok(my_date) = date.new(2005, 11, 12)
   assert post
     == blog.Post("test", "", my_date, ["tag1", "tag2", "tag3"], [

@@ -275,6 +275,15 @@ section#post {
     border-radius: 5px;
   }
 
+  pre {
+    background-color: var(--base);
+    overflow-x: scroll;
+  }
+
+  pre code {
+    font-size: 14px;
+  }
+
   blockquote.alert,
   details {
     margin: 0;
