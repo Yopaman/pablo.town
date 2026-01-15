@@ -81,6 +81,7 @@ pub fn view(infos: Infos) -> Element(_) {
       ]),
     ]),
     False,
+    ["js/home.js"],
   )
 }
 

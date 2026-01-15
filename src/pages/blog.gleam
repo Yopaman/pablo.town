@@ -16,6 +16,7 @@ pub fn view(post: Post(_)) -> Element(_) {
         |> list.append(post.content),
     ),
     True,
+    [],
   )
 }
 
