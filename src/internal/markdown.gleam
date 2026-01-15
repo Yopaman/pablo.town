@@ -3,6 +3,7 @@ import gleam/list
 import gleam/result
 import gleam/string
 import glimra
+import lustre/element.{type Element}
 import mork
 import mork/to_lustre
 import pages/blog
@@ -54,4 +55,12 @@ pub fn from_markdown_file(
     tags: parsed_frontmatter.tags,
     content: parsed_content,
   )
+}
+
+pub fn element_from_md_file(
+  path: String,
+  syntax_highlighter syntax_highlighter: glimra.Config(glimra.HasTheme),
+) -> List(Element(_)) {
+  let assert Ok(file_content) = simplifile.read(path)
+  mork.parse(file_content) |> to_lustre.to_lustre(syntax_highlighter)
 }

@@ -22,7 +22,10 @@ pub fn page(
       html.title([], title),
       case color_codeblocks {
         True -> [
-          glimra.link_static_stylesheet(),
+          html.link([
+            attribute.rel("stylesheet"),
+            attribute.href("/css/glimra.css"),
+          ]),
           html.link([
             attribute.rel("stylesheet"),
             attribute.href("/css/main.css"),

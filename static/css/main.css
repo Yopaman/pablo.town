@@ -193,8 +193,8 @@ section#home {
       }
     }
 
-    &:has(#infos:not(:checked)) #infos-tab,
-    &:has(#me:not(:checked)) #me-tab {
+    &:has(#me:not(:checked)) #me-tab,
+    &:has(#infos:not(:checked)) #infos-tab {
       display: none;
     }
 
@@ -439,9 +439,8 @@ section#post {
 
   img {
     display: block;
-    width: 100%;
+    max-width: 100%;
     max-height: 900px;
-    width: auto;
     height: auto;
     border-radius: 5px;
   }

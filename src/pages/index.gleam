@@ -1,6 +1,8 @@
 import components/page
 import gleam/list
 import gleam/string
+import glimra
+import internal/markdown
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
@@ -8,7 +10,10 @@ import simplifile
 import tempo
 import tempo/date
 
-pub fn view(infos: Infos) -> Element(_) {
+pub fn view(
+  infos: Infos,
+  syntax_highlighter: glimra.Config(glimra.HasTheme),
+) -> Element(_) {
   page.page(
     "accueil",
     html.section([attribute.id("home")], [
@@ -25,22 +30,22 @@ pub fn view(infos: Infos) -> Element(_) {
               html.input([
                 attribute.type_("radio"),
                 attribute.name("tabs"),
-                attribute.id("infos"),
+                attribute.id("me"),
                 attribute.checked(True),
               ]),
-              html.text("infos"),
+              html.text("me"),
             ]),
             html.label([], [
               html.input([
                 attribute.type_("radio"),
                 attribute.name("tabs"),
-                attribute.id("me"),
+                attribute.id("infos"),
               ]),
-              html.text("me"),
+              html.text("infos"),
             ]),
           ],
         ),
-        html.div([attribute.tabindex(0), attribute.id("infos-tab")], [
+        html.div([attribute.tabindex(0), attribute.id("me-tab")], [
           html.pre([attribute.class("command")], [
             html.span([], [html.text("[user@pablo.town ~]$ screenfetch")]),
           ]),
@@ -77,7 +82,10 @@ pub fn view(infos: Infos) -> Element(_) {
             ),
           ]),
         ]),
-        html.div([attribute.tabindex(0), attribute.id("me-tab")], []),
+        html.div(
+          [attribute.tabindex(0), attribute.id("infos-tab")],
+          markdown.element_from_md_file("data/infos.md", syntax_highlighter),
+        ),
       ]),
     ]),
     False,

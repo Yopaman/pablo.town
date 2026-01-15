@@ -27,21 +27,24 @@ pub fn main() {
     ssg.new("./dist")
     |> ssg.add_static_route(
       "/",
-      index.view(Infos(
-        name: "Pablo",
-        birth_date: date.from_string("2002-04-26")
-          |> result.unwrap(date.unix_epoch),
-        interests: ["Cybersecurity", "Computer Science", "Game Development"],
-        links: [
-          Website("Github", "https://github.com/yopaman"),
-          Website("Bluesky", "https://bsky.app/profile/pablo.town"),
-        ],
-        email: "contact[at]this_domain",
-      )),
+      index.view(
+        Infos(
+          name: "Pablo",
+          birth_date: date.from_string("2002-04-26")
+            |> result.unwrap(date.unix_epoch),
+          interests: ["Cybersecurity", "Computer Science", "Game Development"],
+          links: [
+            Website("Github", "https://github.com/yopaman"),
+            Website("Bluesky", "https://bsky.app/profile/pablo.town"),
+          ],
+          email: "contact[at]this_domain",
+        ),
+        syntax_highlighter,
+      ),
     )
     |> ssg.add_static_dir("./static")
     |> glimra.add_static_stylesheet(syntax_highlighter: syntax_highlighter)
-    |> ssg.add_static_route("/blog", list_page.view("posts", posts))
+    |> ssg.add_static_route("/blog", list_page.view("Posts", posts))
     |> add_posts_routes("/blog", posts)
     |> ssg.use_index_routes
     |> ssg.build

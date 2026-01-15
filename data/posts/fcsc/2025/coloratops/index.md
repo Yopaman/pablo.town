@@ -206,9 +206,9 @@ byte compare_pixels(void)
 I didn't take a lot of time to rename all symbols and clean the code, but it is quite simple :
 
 - it loops 64 times, and inside the loop :
-	- it creates a 16 x 32 texture, and place it on each letters positions in the window (`local_2c` is x and `local_30` is y)
-	- it reads the pixels behind these textures in the screen
-	- it calls `color_index` with the color of the first pixel in the square and save the return value in an array
+  - it creates a 16 x 32 texture, and place it on each letters positions in the window (`local_2c` is x and `local_30` is y)
+  - it reads the pixels behind these textures in the screen
+  - it calls `color_index` with the color of the first pixel in the square and save the return value in an array
 - at the end of the loop, it compares the saved values to a list of indexes in memory
 
 Here is `color_index` :
