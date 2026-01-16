@@ -261,7 +261,7 @@ section#home {
     margin-top: 0;
     cursor: default;
     color: var(--surface);
-    font-family: "monospace";
+    font-family: "monospace", "geist-mono";
     font-size: 3.6em;
     line-height: 58px;
     padding-top: 30px;
