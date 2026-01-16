@@ -1,7 +1,6 @@
 import components/footer.{footer}
 import components/header.{header}
 import gleam/list
-import glimra
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html

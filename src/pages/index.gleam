@@ -1,4 +1,5 @@
 import components/page
+import gleam/int
 import gleam/list
 import gleam/string
 import glimra
@@ -67,7 +68,15 @@ pub fn view(
                 |> list.append(key_values("Hostname", [html.text(infos.name)]))
                 |> list.append(
                   key_values("Uptime", [
-                    html.text(infos.birth_date |> date.to_string),
+                    html.text(
+                      {
+                        infos.birth_date
+                        |> date.difference(date.current_local())
+                      }
+                      / 365
+                      |> int.to_string
+                      <> "y",
+                    ),
                   ]),
                 )
                 |> list.append(key_values(
