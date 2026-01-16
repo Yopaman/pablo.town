@@ -21,6 +21,6 @@ gleam test  # Run the tests
 gleam run -b build   # Build the site
 ```
 
-## Helpful resource 
+## Helpful resources 
 
 - [You no longer need JavaScript](https://lyra.horse/blog/2025/08/you-dont-need-js/) by [lyra rebane](https://lyra.horse/), which made me realize css is now way more powerful and less of a headash than what I thought.
