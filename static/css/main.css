@@ -2,7 +2,7 @@
 @import "catppuccin.css";
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
 
   &:has(#theme-light:checked) {
     color-scheme: light;
@@ -143,6 +143,39 @@ header {
         &:before {
           content: "./";
         }
+      }
+    }
+  }
+  theme-picker {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: var(--base);
+    border-radius: 5px;
+    label {
+      background: var(--base);
+      padding: 10px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+      border-radius: 5px;
+      &:has(input:checked) {
+        background: var(--surface);
+      }
+    }
+    input {
+      opacity: 0;
+      position: absolute;
+      pointer-event: none;
+    }
+    @media (width < 800px) {
+      font-size: 0.5em;
+      padding: 7px;
+      label {
+        padding: 5px;
       }
     }
   }

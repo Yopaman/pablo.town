@@ -17,5 +17,27 @@ pub fn header() -> Element(_) {
         ]),
       ]),
     ]),
+    element.element("theme-picker", [attribute.role("radio-group")], [
+      html.label([], [
+        html.input([
+          attribute.type_("radio"),
+          attribute.name("theme"),
+          attribute.id("theme-dark"),
+          attribute.checked(True),
+        ]),
+
+        html.text("dark"),
+      ]),
+
+      html.label([], [
+        html.input([
+          attribute.type_("radio"),
+          attribute.name("theme"),
+          attribute.id("theme-light"),
+        ]),
+
+        html.text("light"),
+      ]),
+    ]),
   ])
 }
