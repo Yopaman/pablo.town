@@ -486,7 +486,7 @@ section#post {
     overflow: scroll;
   }
 
-  @media (width < 800) {
+  @media (width < 800px) {
     width: 90%;
   }
 }
