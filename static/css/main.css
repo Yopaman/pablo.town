@@ -34,6 +34,10 @@ body {
   margin: 0;
 }
 
+pre {
+  font-family: "geist-mono";
+}
+
 /* Normal links */
 a,
 a:visited {
@@ -206,7 +210,7 @@ section#home {
     radio-picker {
       position: absolute;
       top: -15px;
-      font-size: 0.6em;
+      font-size: 0.7em;
 
       label {
         &:has(input:checked) {
@@ -233,7 +237,7 @@ section#home {
       display: none;
     }
 
-    font-size: 1.6em;
+    font-size: 1.3em;
     height: 50vh;
 
     margin-bottom: 20%;
@@ -385,7 +389,7 @@ section#list {
     width: 90%;
 
     h1 {
-      font-size: 1.7;
+      font-size: 1.7em;
     }
 
     article.post {
@@ -400,7 +404,7 @@ section#post {
   width: 60%;
   margin: auto;
   font-family: geist;
-  font-size: 18px;
+  font-size: 1.2em;
 
   code:not(pre code) {
     background-color: var(--base);
@@ -414,7 +418,7 @@ section#post {
   }
 
   pre code {
-    font-size: 14px;
+    font-size: 0.9em;
   }
 
   blockquote.alert,
