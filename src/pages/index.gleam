@@ -1,9 +1,9 @@
+import blogatto/post.{type Post}
 import components/page
 import gleam/int
 import gleam/list
 import gleam/string
-import glimra
-import internal/markdown
+import internal/utils
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
@@ -11,10 +11,7 @@ import simplifile
 import tempo
 import tempo/date
 
-pub fn view(
-  infos: Infos,
-  syntax_highlighter: glimra.Config(glimra.HasTheme),
-) -> Element(_) {
+pub fn view(infos: Infos, _posts: List(Post(Nil))) -> Element(_) {
   page.page(
     "accueil",
     html.section([attribute.id("home")], [
@@ -93,7 +90,7 @@ pub fn view(
         ]),
         html.div(
           [attribute.tabindex(0), attribute.id("infos-tab")],
-          markdown.element_from_md_file("data/infos.md", syntax_highlighter),
+          utils.render_file("data/infos.md"),
         ),
       ]),
     ]),

@@ -15,4 +15,10 @@ version = "1.0.0"
 [dependencies]
 gleam_stdlib = ">= 0.71.0 and < 1.0.0"
 blogatto = ">= 5.1.1 and < 6.0.0"
+mork = ">= 1.11.1 and < 2.0.0"
+maud = ">= 1.0.0 and < 2.0.0"
+simplifile = ">= 2.4.0 and < 3.0.0"
+lustre = ">= 5.6.0 and < 6.0.0"
+gleam_time = ">= 1.8.0 and < 2.0.0"
+gtempo = ">= 7.2.4 and < 8.0.0"
 
