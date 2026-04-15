@@ -2,6 +2,7 @@ import blogatto/post.{type Post}
 import components/page
 import gleam/int
 import gleam/list
+import gleam/result
 import gleam/string
 import internal/utils
 import lustre/attribute
@@ -11,7 +12,19 @@ import simplifile
 import tempo
 import tempo/date
 
-pub fn view(infos: Infos, _posts: List(Post(Nil))) -> Element(_) {
+pub fn view(_posts: List(Post(Nil))) -> Element(_) {
+  let infos =
+    Infos(
+      name: "Pablo",
+      birth_date: date.from_string("2002-04-26")
+        |> result.unwrap(date.unix_epoch),
+      interests: ["Cybersecurity", "Computer Science", "Game Development"],
+      links: [
+        Website("Github", "https://github.com/yopaman"),
+        Website("Bluesky", "https://bsky.app/profile/pablo.town"),
+      ],
+      email: "contact[at]this_domain",
+    )
   page.page(
     "accueil",
     html.section([attribute.id("home")], [

@@ -7,10 +7,10 @@ import lustre/element/html
 
 pub fn page(
   title: String,
-  content: Element(_),
-  color_codeblocks: Bool,
+  content: Element(Nil),
+  highlight_syntax: Bool,
   js_scripts: List(String),
-) -> Element(_) {
+) -> Element(Nil) {
   html.html([attribute.lang("en")], [
     html.head([], [
       html.meta([attribute.charset("UTF-8")]),
@@ -19,31 +19,35 @@ pub fn page(
         attribute.content("width=device-width,initial-scale=1"),
       ]),
       html.title([], title),
-      case color_codeblocks {
-        True -> [
-          html.link([
-            attribute.rel("stylesheet"),
-            attribute.href("/css/glimra.css"),
-          ]),
-          html.link([
-            attribute.rel("stylesheet"),
-            attribute.href("/css/main.css"),
-          ]),
-        ]
+      case highlight_syntax {
         False -> [
           html.link([
             attribute.rel("stylesheet"),
             attribute.href("/css/main.css"),
           ]),
         ]
+        True -> [
+          html.link([
+            attribute.rel("stylesheet"),
+            attribute.href("/css/main.css"),
+          ]),
+          html.link([
+            attribute.rel("stylesheet"),
+            attribute.href("/css/code.css"),
+          ]),
+        ]
       }
         |> element.fragment,
+    ]),
+    html.body([], [
+      header(),
+      content,
+      footer(),
       js_scripts
         |> list.map(fn(p) {
           html.script([attribute.src(p), attribute.attribute("async", "")], "")
         })
         |> element.fragment,
     ]),
-    html.body([], [header(), content, footer()]),
   ])
 }

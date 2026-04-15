@@ -1,42 +1,48 @@
+import blogatto/post.{type Post}
 import components/page
+import gleam/dict
 import gleam/list
+import gleam/result
+import gleam/string
+import internal/utils
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
-import lustre/event
-import pages/blog
-import tempo/date
 
-pub fn view(title: String, posts: List(blog.Post(_))) -> Element(_) {
+pub fn view(posts: List(Post(_))) -> Element(Nil) {
   page.page(
-    title,
+    "Blog",
     html.section(
       [attribute.id("list")],
-      [html.h1([], [html.text(title)])]
+      [html.h1([], [html.text("Blog")])]
         |> list.append(
           posts
-          |> list.map(fn(post: blog.Post(_)) {
+          |> list.map(fn(post: Post(_)) {
             html.article(
-              [attribute.class("post"), event.on_click("")],
+              [attribute.class("post")],
               [
                 html.a(
                   [
-                    attribute.href(post |> blog.get_post_link),
+                    attribute.href("/blog/" <> post.slug),
                     attribute.class("post-title"),
                   ],
                   [html.text(post.title)],
                 ),
                 html.p([attribute.class("date")], [
-                  html.text(post.date |> date.to_string),
+                  html.text(post.date |> utils.timestamp_to_string),
                 ]),
               ]
                 |> list.append(
-                  post.tags
+                  post.extras
+                  |> dict.get("tags")
+                  |> result.unwrap("")
+                  |> string.replace(", ", ",")
+                  |> string.split(",")
                   |> list.map(fn(tag) {
                     html.a(
                       [
                         attribute.class("chip tag"),
-                        attribute.href(tag |> blog.get_tag_link),
+                        attribute.href("/blog/tag/" <> tag),
                       ],
                       [html.text(tag)],
                     )

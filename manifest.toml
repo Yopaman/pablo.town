@@ -34,6 +34,7 @@ packages = [
   { name = "simplifile", version = "2.4.0", build_tools = ["gleam"], requirements = ["filepath", "gleam_stdlib"], otp_app = "simplifile", source = "hex", outer_checksum = "7C18AFA4FED0B4CE1FA5B0B4BAC1FA1744427054EA993565F6F3F82E5453170D" },
   { name = "smalto", version = "3.0.0", build_tools = ["gleam"], requirements = ["gleam_community_ansi", "gleam_stdlib", "houdini"], otp_app = "smalto", source = "hex", outer_checksum = "13EA8935A9E60A770E326FB850F5A5B3612A62E0A6C62C3F850AD04C842E3769" },
   { name = "smalto_lustre", version = "3.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "lustre", "smalto"], otp_app = "smalto_lustre", source = "hex", outer_checksum = "63C5F2CE886D7CDFEAABAAC5A0E7B3EDBF69F9776A08AACA0360B0948745EF2A" },
+  { name = "smalto_lustre_themes", version = "3.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "lustre", "smalto_lustre"], otp_app = "smalto_lustre_themes", source = "hex", outer_checksum = "50EAA03DB51FF7F3FA4457EC78D522A8C27B8DE11DE04407100473587E453499" },
   { name = "splitter", version = "1.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "splitter", source = "hex", outer_checksum = "3DFD6B6C49E61EDAF6F7B27A42054A17CFF6CA2135FF553D0CB61C234D281DD0" },
   { name = "str", version = "2.1.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "houdini", "odysseus"], otp_app = "str", source = "hex", outer_checksum = "8414C7B6221F1E5244AADC837AC19C47D71AF606E394A82FCA53357C705156FA" },
   { name = "tzif", version = "1.1.2", build_tools = ["gleam"], requirements = ["filepath", "gleam_stdlib", "gleam_time", "simplifile"], otp_app = "tzif", source = "hex", outer_checksum = "04C8EBAFB7F6A6E61B8B0C16E06F96E7C7F76C31172EF07204CE9813B2E54AD2" },
@@ -45,8 +46,7 @@ packages = [
 blogatto = { version = ">= 5.1.1 and < 6.0.0" }
 gleam_stdlib = { version = ">= 0.71.0 and < 1.0.0" }
 gleam_time = { version = ">= 1.8.0 and < 2.0.0" }
-gtempo = { version = ">= 7.2.4 and < 8.0.0" }
 lustre = { version = ">= 5.6.0 and < 6.0.0" }
 maud = { version = ">= 1.0.0 and < 2.0.0" }
-mork = { version = ">= 1.11.1 and < 2.0.0" }
 simplifile = { version = ">= 2.4.0 and < 3.0.0" }
+smalto_lustre_themes = { version = ">= 3.0.0 and < 4.0.0" }

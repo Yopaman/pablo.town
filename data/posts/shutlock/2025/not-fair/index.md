@@ -1,7 +1,8 @@
 ---
-title = '[Shutlock 2025] Not Fair'
-date = '2025-06-30'
-tags = ['ctf-writeup', 'reverse-engineering', 'english']
+title: [Shutlock 2025] Not Fair
+date: 2025-06-30 00:00:00
+description: 
+tags: ctf-writeup, reverse-engineering, english
 ---
 
 > [!instructions] 
@@ -140,7 +141,7 @@ We also know that the ennemy will play two times on turns 2 and 4
 
 What a great opportunity to bring out my Connect 4 game!
 
-![Pasted image 20250625235730](img/Pasted%20image%2020250625235730.png)
+![Pasted image 20250625235730](Pasted%20image%2020250625235730.png)
 
 I found my opponent moves with this small python script :
 
@@ -154,7 +155,7 @@ for k in [ord(c) for c in ["b", "d", "f"]]:
 
 If the first move is something else than 'b', it will create ennemy moves that are not characters from 'a' to 'g' and lead to a lose. By starting at position 'b', we can easily find the right sequence of moves, which is `bfdcegfd` :
 
-![Pasted image 20250626001222](img/Pasted%20image%2020250626001222.png)
+![Pasted image 20250626001222](Pasted%20image%2020250626001222.png)
 
 ```text
 turn  me  ennemy   
@@ -172,4 +173,4 @@ turn  me  ennemy
 
 And we get the flag !
 
-![Pasted image 20250626000427](img/Pasted%20image%2020250626000427.png)
+![Pasted image 20250626000427](Pasted%20image%2020250626000427.png)

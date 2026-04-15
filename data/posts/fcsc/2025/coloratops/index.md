@@ -1,7 +1,8 @@
 ---
-title = '[FCSC 2025] Coloratops'
-date = '2025-04-27'
-tags = ['ctf-writeup', 'reverse-engineering', 'english']
+title: [FCSC 2025] Coloratops
+date: 2025-04-27 00:00:00
+description: 
+tags: ctf-writeup, reverse-engineering, english
 ---
 
 > [!instructions]
@@ -28,7 +29,7 @@ The first thing we can note is that only some characters are allowed : `'F'`, `'
 >  ```
 
 
-![The main window of the program](./img/img1.png)
+![The main window of the program](img1.png)
 
 ## Static analysis
 
@@ -273,7 +274,7 @@ print_colors_by_index(colors, colors_indexes)
 
 We get this output :
 
-![color sequence](./img/img2.png)
+![color sequence](img2.png)
 
 Now, the remaining question is : how are the colors determined. First, my idea was to bruteforce the colors manually, but I don't like to do something without understanding how it work.
 
@@ -289,7 +290,7 @@ After opening the font in [fontdrop.info](https://fontdrop.info), I could see th
 
 When we type random hex characters with the font, we get colored letters, and the colors change depending on the typed text.
 
-![color sequence](./img/img3.png)
+![color sequence](img3.png)
 
 To find the flag, I made a python script that test different hex characters, starting from the end, with a fixed length text buffer. (For the color detection from the font, I have to admit that ChatGPT helped me a lot since I hadn't time to learn about font parsing, and it is hard to find the right documentation).
 
@@ -470,4 +471,4 @@ Trying : FCSC{393005dd2218ba02bfda28559813de7586c267140d08e1e83a4ae5a61d}
 
 Aaaand it's the right flag !
 
-![correct flag](img/img4.png)
+![correct flag](img4.png)
