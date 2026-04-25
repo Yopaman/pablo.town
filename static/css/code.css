@@ -1,11 +1,5 @@
 @import "catppuccin.css";
 
-pre.code-block {
-    background: var(--ctp-mocha-base);
-    color: var(--ctp-mocha-text);
-    overflow-x: auto;
-}
-
 .smalto-keyword {
     color: var(--ctp-mocha-mauve);
 }
