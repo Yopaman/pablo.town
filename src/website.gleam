@@ -9,7 +9,7 @@ import pages/index
 import pages/list
 import pages/post
 
-pub fn main() {
+pub fn config() -> config.Config(Nil) {
   let md =
     markdown.default()
     |> markdown.markdown_path("./data/posts")
@@ -17,13 +17,16 @@ pub fn main() {
     |> markdown.template(post.view)
     |> markdown.syntax_highlighting(syntax_highlighting())
 
-  let cfg =
-    config.new("https://pablo.town")
-    |> config.output_dir("./dist")
-    |> config.static_dir("./static")
-    |> config.markdown(md)
-    |> config.route("/", index.view)
-    |> config.route("/blog", list.view)
+  config.new("https://pablo.town")
+  |> config.output_dir("./dist")
+  |> config.static_dir("./static")
+  |> config.markdown(md)
+  |> config.route("/", index.view)
+  |> config.route("/blog", list.view)
+}
+
+pub fn main() {
+  let cfg = config()
 
   let assert Ok(Nil) = blogatto.build(cfg)
 }
