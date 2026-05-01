@@ -16,6 +16,7 @@ pub fn config() -> config.Config(Nil) {
     |> markdown.route_prefix("blog")
     |> markdown.template(post.view)
     |> markdown.syntax_highlighting(syntax_highlighting())
+    |> markdown.blockquote(fn(children) { todo })
 
   config.new("https://pablo.town")
   |> config.output_dir("./dist")
