@@ -1,0 +1,112 @@
+:root {
+  --light: #dfcfff;
+  --dark: #33004d;
+  --text: #000000;
+  --layout-breakpoint-small: 800px;
+
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text);
+  background-image: url("dithered.png");
+  background-size: 8px;
+}
+
+button {
+  /* button reset: https://stackoverflow.com/a/45890842 */
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  background-color: var(--light);
+  color: var(--text);
+  border: 1px solid var(--dark);
+  box-shadow: 1px 1px 0px var(--dark);
+  padding: 2px;
+}
+
+button:active {
+  box-shadow: 0px 0px 0px var(--dark);
+}
+
+button:hover {
+  background-color: var(--light);
+  background-image: radial-gradient(var(--dark) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+window {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light);
+  width: 100%;
+  resize: both;
+  overflow: auto;
+
+  window-title {
+    display: flex;
+    position: relative;
+    height: 20px;
+    text-align: center;
+    border-top: 1px solid var(--dark);
+    border-right: 1px solid var(--dark);
+    border-left: 1px solid var(--dark);
+    top: 0;
+    left: 0;
+    cursor: pointer;
+
+    .title {
+      position: absolute;
+      padding-left: 5px;
+      padding-right: 5px;
+      background-color: var(--light);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .background {
+      width: 100%;
+      margin: 2px;
+      background-color: var(--light);
+      background-image: radial-gradient(var(--dark) 0.5px, transparent 0.5px);
+      background-size: 3px 3px;
+      cursor: pointer;
+    }
+  }
+
+  window-body {
+    display: block;
+    flex-basis: 100%;
+    border: 4px solid var(--dark);
+    border-style: double;
+    padding: 5px;
+    overflow: auto;
+  }
+}
+
+/* Layout */
+
+/* header { */
+/* display: flex; */
+/* } */
+
+window.logo {
+  position: absolute;
+  z-index: 0;
+  width: 40%;
+  height: 185px;
+
+  img {
+    object-fit: fill;
+  }
+}
+
+window.menu {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 70%;
+}

@@ -1,0 +1,12 @@
+Site {
+    .title = "pablo.town",
+    .host_url = "https://pablo.town",
+    .content_dir_path = "content",
+    .layouts_dir_path = "layouts",
+    .assets_dir_path = "assets",
+    .static_assets = [
+        "Temml.woff2",
+        "dithered.png",
+        "logo.png",
+    ],
+}
