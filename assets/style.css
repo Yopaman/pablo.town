@@ -83,7 +83,6 @@ window {
     border: 4px solid var(--dark);
     border-style: double;
     padding: 5px;
-    overflow: auto;
   }
 }
 
@@ -97,10 +96,14 @@ window.logo {
   position: absolute;
   z-index: 0;
   width: 40%;
-  height: 185px;
 
   img {
+    max-width: inherit;
+    max-height: inherit;
+    height: 100%;
+    width: 100%;
     object-fit: fill;
+    margin: 0;
   }
 }
 
