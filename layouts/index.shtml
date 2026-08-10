@@ -31,7 +31,7 @@
 
 						<div class="page">
 							<h1 :text="$page.title"></h1>
-							<div class="band"><span>SPECIAL EDITION</span><span>APTOS POST TYPOGRAPHY</span></div>
+							<div class="band"><span>SPECIAL EDITION</span><span>HANDMADE</span></div>
 							<div :html="$page.content()"></div>
 						</div>
 					</div>
