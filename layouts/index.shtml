@@ -1,7 +1,41 @@
 <extend template="base.shtml">
-<head id="head">
-</head>
-<body id="body">
-	<h1 :text="$page.title"></h1>
-	<div :html="$page.content()"></div>
-</body>
+
+	<head id="head">
+	</head>
+
+	<body id="body">
+		<main>
+			<window class="about">
+				<window-title>
+					<div class="background">
+						<div class="title">about</div>
+					</div>
+				</window-title>
+				<window-body>
+					<div class="text-editor">
+						<div class="corner"></div>
+
+						<div class="ruler ruler--h">
+							<i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
+							<i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
+							<i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i>
+							<i style="--n:12"></i><i style="--n:13"></i><i style="--n:14"></i><i style="--n:15"></i>
+							<i style="--n:16"></i><i style="--n:17"></i><i style="--n:18"></i><i style="--n:19"></i>
+						</div>
+
+						<div class="ruler ruler--v">
+							<i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
+							<i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
+							<i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i>
+						</div>
+
+						<div class="page">
+							<h1 :text="$page.title"></h1>
+							<div class="band"><span>SPECIAL EDITION</span><span>APTOS POST TYPOGRAPHY</span></div>
+							<div :html="$page.content()"></div>
+						</div>
+					</div>
+				</window-body>
+			</window>
+		</main>
+	</body>

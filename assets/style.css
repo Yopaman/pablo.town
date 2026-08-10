@@ -1,14 +1,37 @@
 :root {
+  /* Colors */
   --light: #dfcfff;
+  --lightless: #a68ac4;
   --dark: #33004d;
-  --text: #000000;
+  --text: #000;
+  --paper: #fff;
+  --chrome: #b8b8b8;
+
+  /* Ruler */
+  --rule-size: 22px;
+  --unit: 8px;
+  --major: 48px;
+  --tick-minor: 5px;
+  --tick-major: 11px;
+
   --layout-breakpoint-small: 800px;
+
+  --pixel-font: "Chicago", "Geneva", "Monaco", ui-monospace,
+    "DejaVu Sans Mono", monospace;
+
 
   font-family: 'Courier New', Courier, monospace;
   color: var(--text);
   background-image: url("dithered.png");
   background-size: 8px;
 }
+
+body {
+  font-family: var(--pixel-font);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
 
 button {
   /* button reset: https://stackoverflow.com/a/45890842 */
@@ -41,11 +64,12 @@ window {
   display: flex;
   flex-direction: column;
   background-color: var(--light);
-  width: 100%;
-  resize: both;
+  width: fit-content;
   overflow: auto;
+  resize: both;
 
   window-title {
+    flex: 0 0 20px;
     display: flex;
     position: relative;
     height: 20px;
@@ -65,6 +89,7 @@ window {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      user-select: none;
     }
 
     .background {
@@ -78,6 +103,9 @@ window {
   }
 
   window-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
     display: block;
     flex-basis: 100%;
     border: 4px solid var(--dark);
@@ -86,18 +114,157 @@ window {
   }
 }
 
+
+.text-editor {
+  display: grid;
+  grid-template-columns: var(--rule-size) 1fr;
+  grid-template-rows: var(--rule-size) 1fr;
+  background: var(--paper);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.corner {
+  background: var(--paper);
+  border-right: 1px solid var(--text);
+  border-bottom: 1px solid var(--text);
+  position: relative;
+}
+
+.corner::after {
+  content: "0,0";
+  position: absolute;
+  right: 2px;
+  bottom: 1px;
+  font-size: 8px;
+  line-height: 1;
+  color: var(--text);
+}
+
+
+.ruler {
+  position: relative;
+  background-color: var(--paper);
+  background-repeat: repeat-x;
+  color: var(--text);
+}
+
+.ruler--h {
+  height: var(--rule-size);
+  border-bottom: 1px solid var(--text);
+  background-image:
+    /* major */
+    linear-gradient(to right, currentColor 0 1px, transparent 1px),
+    /* minor */
+    linear-gradient(to right, currentColor 0 1px, transparent 1px);
+  background-size:
+    var(--major) var(--tick-major),
+    var(--unit) var(--tick-minor);
+  background-position: left bottom, left bottom;
+  background-repeat: repeat-x;
+}
+
+.ruler--v {
+  width: var(--rule-size);
+  border-right: 1px solid var(--text);
+  background-image:
+    linear-gradient(to bottom, currentColor 0 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 0 1px, transparent 1px);
+  background-size:
+    var(--tick-major) var(--major),
+    var(--tick-minor) var(--unit);
+  background-position: right top, right top;
+  background-repeat: repeat-y;
+}
+
+.ruler {
+  counter-reset: mark -1;
+}
+
+.ruler i {
+  counter-increment: mark;
+  position: absolute;
+  font-style: normal;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.ruler i::after {
+  content: counter(mark);
+}
+
+.ruler--h i {
+  top: 3px;
+  left: calc(var(--major) * var(--n) + 2px);
+}
+
+.ruler--v i {
+  left: 2px;
+  top: calc(var(--major) * var(--n) + 2px);
+}
+
+.page {
+  position: relative;
+  min-height: 420px;
+  padding: 28px 34px;
+  background-image:
+    repeating-linear-gradient(to right, var(--text) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(to right, var(--text) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(to bottom, var(--text) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(to bottom, var(--text) 0 1px, transparent 1px 3px);
+  background-size: 100% 1px, 100% 1px, 1px 100%, 1px 100%;
+  background-position: left 24px, left calc(100% - 24px), 24px top, calc(100% - 24px) top;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-family: Times, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: 44px;
+  letter-spacing: 2px;
+  margin: 6px 0 10px;
+}
+
+.band {
+  border-top: 3px solid var(--text);
+  border-bottom: 1px solid var(--text);
+  padding: 1px 0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  font-family: Times, serif;
+  font-size: 13px;
+  text-align: justify;
+  max-width: 68ch;
+  margin: 14px 0 0;
+}
+
+
 /* Layout */
 
-/* header { */
-/* display: flex; */
-/* } */
+header {
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  min-height: 200px;
+}
+
+header>window {
+  grid-area: 1 / 1;
+  width: fit-content;
+}
 
 window.logo {
-  position: absolute;
-  z-index: 0;
-  width: 40%;
+  translate: -60px -20px;
+  z-index: 1;
 
   img {
+    display: block;
     max-width: inherit;
     max-height: inherit;
     height: 100%;
@@ -108,8 +275,25 @@ window.logo {
 }
 
 window.menu {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 70%;
+  translate: 200px 60px;
+  z-index: 2;
+}
+
+main {
+  display: grid;
+  place-items: center;
+}
+
+main>window {
+  grid-area: 1 / 1;
+  width: fit-content;
+}
+
+window.about {
+  resize: none;
+  width: 50%;
+
+  window-body {
+    padding: 0;
+  }
 }

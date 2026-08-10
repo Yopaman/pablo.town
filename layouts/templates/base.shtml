@@ -7,11 +7,10 @@
 	<title :text="$site.title"></title>
 	<link type="text/css" rel="stylesheet" href="$site.asset('style.css').link()">
 	<link type="text/css" rel="stylesheet" href="$site.asset('highlight.css').link()">
-	<!-- mathtex -->
 	<link type="text/css" rel="stylesheet" href="$site.asset('Temml-Local.css').link()">
 	<script defer src="$site.asset('temml.min.js').link()"></script>
 	<script defer src="$site.asset('render-mathtex.js').link()"></script>
-	<!-- /mathtex -->
+	<script defer src="$site.asset('main.js').link()"></script>
 	<super>
 </head>
 
@@ -40,9 +39,6 @@
 					<button href="$site.page('').link()">Home</button>
 					<button href="$site.page('about').link()">About</button>
 					<button href="$site.page('blog').link()">Blog</button>
-					<ctx :if="$site.page('devlog').subpages().first?()">
-						<button href="$if.link()">Devlog</button>
-					</ctx>
 				</nav>
 			</window-body>
 		</window>
