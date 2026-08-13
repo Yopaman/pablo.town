@@ -1,3 +1,51 @@
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramondLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramondLight-Italic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   /* Colors */
   --light: #dfcfff;
@@ -16,11 +64,11 @@
 
   --layout-breakpoint-small: 800px;
 
-  --pixel-font: "Chicago", "Geneva", "Monaco", ui-monospace,
-    "DejaVu Sans Mono", monospace;
+  --journal-font:
+    "Apple Garamond", "Time", "Time New Roman";
+  --pixel-font: monospace;
 
 
-  font-family: 'Courier New', Courier, monospace;
   color: var(--text);
   background-image: url("dithered.png");
   background-size: 8px;
@@ -216,33 +264,57 @@ window {
   background-size: 100% 1px, 100% 1px, 1px 100%, 1px 100%;
   background-position: left 24px, left calc(100% - 24px), 24px top, calc(100% - 24px) top;
   background-repeat: no-repeat;
+  font-family: var(--journal-font);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+
+
+
+  h1 {
+    font-weight: 400;
+    font-size: 60px;
+    letter-spacing: 2px;
+    margin: 6px 0 10px;
+  }
+
+  .band {
+    border-top: 3px solid var(--text);
+    border-bottom: 1px solid var(--text);
+    padding: 1px 0;
+    font-size: 10px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 14px 0 0;
+  }
+
+  .content {
+    img {
+      width: 100%;
+    }
+
+    display: grid;
+    grid-template-columns: 1fr,
+    3fr;
+    grid-gap: 10px;
+
+    #text-right {
+      p::first-letter {
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+    }
+
+    #text-bottom {
+      grid-column: span 2 / span 2;
+    }
+  }
 }
 
-h1 {
-  font-family: Times, "Times New Roman", serif;
-  font-weight: 400;
-  font-size: 44px;
-  letter-spacing: 2px;
-  margin: 6px 0 10px;
-}
-
-.band {
-  border-top: 3px solid var(--text);
-  border-bottom: 1px solid var(--text);
-  padding: 1px 0;
-  font-size: 10px;
-  letter-spacing: 1px;
-  display: flex;
-  justify-content: space-between;
-}
-
-p {
-  font-family: Times, serif;
-  font-size: 13px;
-  text-align: justify;
-  max-width: 68ch;
-  margin: 14px 0 0;
-}
 
 
 /* Layout */

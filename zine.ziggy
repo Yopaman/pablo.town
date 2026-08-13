@@ -5,7 +5,12 @@ Site {
     .layouts_dir_path = "layouts",
     .assets_dir_path = "assets",
     .static_assets = [
-        "Temml.woff2",
+        "AppleGaramond.ttf",
+        "AppleGaramond-Bold.ttf",
+        "AppleGaramond-Italic.ttf",
+        "AppleGaramond-Light.ttf",
+        "AppleGaramond-LightItalic.ttf",
+        "AppleGaramond-BoldItalic.ttf",
         "dithered.png",
         "logo.png",
     ],

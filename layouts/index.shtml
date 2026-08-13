@@ -30,9 +30,12 @@
 						</div>
 
 						<div class="page">
-							<h1 :text="$page.title"></h1>
-							<div class="band"><span>SPECIAL EDITION</span><span>HANDMADE</span></div>
-							<div :html="$page.content()"></div>
+							<div class="title">
+								<h1 :text="$page.title"></h1>
+								<div class="band"><span>SPECIAL EDITION</span><span :text="$page.date.format('02/01/2006')"></span>
+								</div>
+							</div>
+							<div class="content" :html="$page.content()"></div>
 						</div>
 					</div>
 				</window-body>
