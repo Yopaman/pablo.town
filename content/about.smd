@@ -1,0 +1,14 @@
+---
+.title = "About me",
+.date = @date("1990-01-01T00:00:00"),
+.author = "Sample Author",
+.layout = "index.shtml",
+.draft = false,
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non elit ut est fringilla lobortis. Sed efficitur ut neque pellentesque porttitor. Vivamus a venenatis justo, eu consequat purus. Morbi et sem arcu. Quisque egestas tristique orci, eu interdum tortor euismod id. Suspendisse placerat mauris nibh, non suscipit justo commodo in. In non dui a felis tempor lacinia mollis eu augue. Cras pharetra laoreet orci a suscipit. Sed tincidunt elit et erat facilisis laoreet. 
+
+
+
+
+

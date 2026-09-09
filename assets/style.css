@@ -1,0 +1,371 @@
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramond-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramondLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('AppleGaramondLight-Italic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Colors */
+  --light: #dfcfff;
+  --lightless: #a68ac4;
+  --dark: #33004d;
+  --text: #000;
+  --paper: #fff;
+  --chrome: #b8b8b8;
+
+  /* Ruler */
+  --rule-size: 22px;
+  --unit: 8px;
+  --major: 48px;
+  --tick-minor: 5px;
+  --tick-major: 11px;
+
+  --layout-breakpoint-small: 800px;
+
+  --journal-font:
+    "Apple Garamond", "Time", "Time New Roman";
+  --pixel-font: monospace;
+
+
+  color: var(--text);
+  background-image: url("dithered.png");
+  background-size: 8px;
+}
+
+body {
+  font-family: var(--pixel-font);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+
+button {
+  /* button reset: https://stackoverflow.com/a/45890842 */
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  background-color: var(--light);
+  color: var(--text);
+  border: 1px solid var(--dark);
+  box-shadow: 1px 1px 0px var(--dark);
+  padding: 2px;
+}
+
+button:active {
+  box-shadow: 0px 0px 0px var(--dark);
+}
+
+button:hover {
+  background-color: var(--light);
+  background-image: radial-gradient(var(--dark) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+window {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light);
+  width: fit-content;
+  overflow: auto;
+  resize: both;
+
+  window-title {
+    flex: 0 0 20px;
+    display: flex;
+    position: relative;
+    height: 20px;
+    text-align: center;
+    border-top: 1px solid var(--dark);
+    border-right: 1px solid var(--dark);
+    border-left: 1px solid var(--dark);
+    top: 0;
+    left: 0;
+    cursor: pointer;
+
+    .title {
+      position: absolute;
+      padding-left: 5px;
+      padding-right: 5px;
+      background-color: var(--light);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      user-select: none;
+    }
+
+    .background {
+      width: 100%;
+      margin: 2px;
+      background-color: var(--light);
+      background-image: radial-gradient(var(--dark) 0.5px, transparent 0.5px);
+      background-size: 3px 3px;
+      cursor: pointer;
+    }
+  }
+
+  window-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    display: block;
+    flex-basis: 100%;
+    border: 4px solid var(--dark);
+    border-style: double;
+    padding: 5px;
+  }
+}
+
+
+.text-editor {
+  display: grid;
+  grid-template-columns: var(--rule-size) 1fr;
+  grid-template-rows: var(--rule-size) 1fr;
+  background: var(--paper);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.corner {
+  background: var(--paper);
+  border-right: 1px solid var(--text);
+  border-bottom: 1px solid var(--text);
+  position: relative;
+}
+
+.corner::after {
+  content: "0,0";
+  position: absolute;
+  right: 2px;
+  bottom: 1px;
+  font-size: 8px;
+  line-height: 1;
+  color: var(--text);
+}
+
+
+.ruler {
+  position: relative;
+  background-color: var(--paper);
+  background-repeat: repeat-x;
+  color: var(--text);
+}
+
+.ruler--h {
+  height: var(--rule-size);
+  border-bottom: 1px solid var(--text);
+  background-image:
+    /* major */
+    linear-gradient(to right, currentColor 0 1px, transparent 1px),
+    /* minor */
+    linear-gradient(to right, currentColor 0 1px, transparent 1px);
+  background-size:
+    var(--major) var(--tick-major),
+    var(--unit) var(--tick-minor);
+  background-position: left bottom, left bottom;
+  background-repeat: repeat-x;
+}
+
+.ruler--v {
+  width: var(--rule-size);
+  border-right: 1px solid var(--text);
+  background-image:
+    linear-gradient(to bottom, currentColor 0 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 0 1px, transparent 1px);
+  background-size:
+    var(--tick-major) var(--major),
+    var(--tick-minor) var(--unit);
+  background-position: right top, right top;
+  background-repeat: repeat-y;
+}
+
+.ruler {
+  counter-reset: mark -1;
+}
+
+.ruler i {
+  counter-increment: mark;
+  position: absolute;
+  font-style: normal;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.ruler i::after {
+  content: counter(mark);
+}
+
+.ruler--h i {
+  top: 3px;
+  left: calc(var(--major) * var(--n) + 2px);
+}
+
+.ruler--v i {
+  left: 2px;
+  top: calc(var(--major) * var(--n) + 2px);
+}
+
+.page {
+  position: relative;
+  min-height: 420px;
+  padding: 28px 34px;
+  background-image:
+    repeating-linear-gradient(to right, var(--text) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(to right, var(--text) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(to bottom, var(--text) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(to bottom, var(--text) 0 1px, transparent 1px 3px);
+  background-size: 100% 1px, 100% 1px, 1px 100%, 1px 100%;
+  background-position: left 24px, left calc(100% - 24px), 24px top, calc(100% - 24px) top;
+  background-repeat: no-repeat;
+  font-family: var(--journal-font);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+
+
+
+  h1 {
+    font-weight: 400;
+    font-size: 60px;
+    letter-spacing: 2px;
+    margin: 6px 0 10px;
+  }
+
+  .band {
+    border-top: 3px solid var(--text);
+    border-bottom: 1px solid var(--text);
+    padding: 1px 0;
+    font-size: 10px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 14px 0 0;
+  }
+
+  .content {
+    img {
+      width: 100%;
+    }
+
+    display: grid;
+    grid-template-columns: 1fr,
+    3fr;
+    grid-gap: 10px;
+
+    #text-right {
+      p::first-letter {
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+    }
+
+    #text-bottom {
+      grid-column: span 2 / span 2;
+    }
+  }
+}
+
+
+
+/* Layout */
+
+header {
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  min-height: 200px;
+}
+
+header>window {
+  grid-area: 1 / 1;
+  width: fit-content;
+}
+
+window.logo {
+  translate: -60px -20px;
+  z-index: 1;
+
+  img {
+    display: block;
+    max-width: inherit;
+    max-height: inherit;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    margin: 0;
+  }
+}
+
+window.menu {
+  translate: 200px 60px;
+  z-index: 2;
+}
+
+main {
+  display: grid;
+  place-items: center;
+}
+
+main>window {
+  grid-area: 1 / 1;
+  width: fit-content;
+}
+
+window.about {
+  resize: none;
+  width: 50%;
+
+  window-body {
+    padding: 0;
+  }
+}

@@ -1,0 +1,19 @@
+---
+.title = "Bienvenue !",
+.date = @date("2026-08-12T00:00:00"),
+.author = "Pablo",
+.layout = "index.shtml",
+.draft = false,
+---
+
+[]($section.id('illu'))
+[]($image.asset('img/cat-image.png'))
+
+[]($section.id('text-right'))
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non elit ut est fringilla lobortis. Sed efficitur ut neque pellentesque porttitor. Vivamus a venenatis justo, eu consequat purus. Morbi et sem arcu. Quisque egestas tristique orci, eu interdum tortor euismod id. Suspendisse placerat mauris nibh, non suscipit justo commodo in. In non dui a felis tempor lacinia mollis eu augue. Cras pharetra laoreet orci a suscipit. Sed tincidunt elit et erat facilisis laoreet. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+
+[]($section.id('text-bottom'))
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non elit ut est fringilla lobortis. Sed efficitur ut neque pellentesque porttitor. Vivamus a venenatis justo, eu consequat purus. Morbi et sem arcu. Quisque egestas tristique orci, eu interdum tortor euismod id. Suspendisse placerat mauris nibh, non suscipit justo commodo in. In non dui a felis tempor lacinia mollis eu augue. Cras pharetra laoreet orci a suscipit. Sed tincidunt elit et erat facilisis laoreet. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non elit ut est fringilla lobortis. Sed efficitur ut neque pellentesque porttitor. Vivamus a venenatis justo, eu consequat purus. Morbi et sem arcu. Quisque egestas tristique orci, eu interdum tortor euismod id. Suspendisse placerat mauris nibh, non suscipit justo commodo in. In non dui a felis tempor lacinia mollis eu augue. Cras pharetra laoreet orci a suscipit. Sed tincidunt elit et erat facilisis laoreet. 
