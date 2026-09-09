@@ -1,55 +1,53 @@
 <!DOCTYPE html>
 <html>
 
-<head id="head">
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1">
-	<title :text="$site.title"></title>
-	<link type="text/css" rel="stylesheet" href="$site.asset('style.css').link()">
-	<link type="text/css" rel="stylesheet" href="$site.asset('highlight.css').link()">
-	<link type="text/css" rel="stylesheet" href="$site.asset('Temml-Local.css').link()">
-	<script defer src="$site.asset('temml.min.js').link()"></script>
-	<script defer src="$site.asset('render-mathtex.js').link()"></script>
-	<script defer src="$site.asset('main.js').link()"></script>
-	<super>
-</head>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title :text="$site.title"></title>
+		<link type="text/css" rel="stylesheet" href="$site.asset('style.css').link()">
+		<link type="text/css" rel="stylesheet" href="$site.asset('highlight.css').link()">
+		<link type="text/css" rel="stylesheet" href="$site.asset('Temml-Local.css').link()">
+		<script defer src="$site.asset('temml.min.js').link()"></script>
+		<script defer src="$site.asset('render-mathtex.js').link()"></script>
+		<script defer src="$site.asset('main.js').link()"></script>
+		<super>
+	</head>
 
-<body id="body">
-	<header>
+	<body id="body">
+		<header>
 
-		<window class="logo">
-			<window-title>
-				<div class="background">
-					<div class="title">logo.png</div>
-				</div>
-			</window-title>
-			<window-body>
-				<img src="logo.png" alt="logo">
-			</window-body>
-		</window>
+			<window class="logo">
+				<window-title>
+					<div class="background">
+						<div class="title">logo.png</div>
+					</div>
+				</window-title>
+				<window-body>
+					<img src="logo.png" alt="logo">
+				</window-body>
+			</window>
 
-		<window class="menu">
-			<window-title>
-				<div class="background">
-					<div class="title">menu</div>
-				</div>
-			</window-title>
-			<window-body>
-				<nav>
-					<button href="$site.page('').link()">Home</button>
-					<button href="$site.page('about').link()">About</button>
-					<button href="$site.page('blog').link()">Blog</button>
-				</nav>
-			</window-body>
-		</window>
-
-	</header>
-	<super>
+			<window class="menu">
+				<window-title>
+					<div class="background">
+						<div class="title">menu</div>
+					</div>
+				</window-title>
+				<window-body>
+					<nav>
+						<button href="$site.page('').link()">Home</button>
+						<button href="$site.page('about').link()">About</button>
+						<button href="$site.page('blog').link()">Blog</button>
+					</nav>
+				</window-body>
+			</window>
+		</header>
+		<super>
 		<footer>
 			<hr>
 			<h5>SITE UNDER CONSTRUCTION</h5>
 			<img src="$site.asset('under-construction.gif').link()" width=90>
 		</footer>
-</body>
-
+	</body>
 </html>

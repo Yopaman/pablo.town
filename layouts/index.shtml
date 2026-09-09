@@ -1,44 +1,43 @@
 <extend template="base.shtml">
 
-	<head id="head">
-	</head>
+<head id="head">
+</head>
 
-	<body id="body">
-		<main>
-			<window class="about">
-				<window-title>
-					<div class="background">
-						<div class="title">about</div>
+<body id="body">
+	<main>
+		<window class="about">
+			<window-title>
+				<div class="background">
+					<div class="title">about</div>
+				</div>
+			</window-title>
+			<window-body>
+				<div class="text-editor">
+					<div class="corner"></div>
+
+					<div class="ruler ruler--h">
+						<i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
+						<i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
+						<i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i>
+						<i style="--n:12"></i><i style="--n:13"></i><i style="--n:14"></i><i style="--n:15"></i>
+						<i style="--n:16"></i><i style="--n:17"></i><i style="--n:18"></i><i style="--n:19"></i>
 					</div>
-				</window-title>
-				<window-body>
-					<div class="text-editor">
-						<div class="corner"></div>
 
-						<div class="ruler ruler--h">
-							<i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
-							<i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
-							<i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i>
-							<i style="--n:12"></i><i style="--n:13"></i><i style="--n:14"></i><i style="--n:15"></i>
-							<i style="--n:16"></i><i style="--n:17"></i><i style="--n:18"></i><i style="--n:19"></i>
-						</div>
-
-						<div class="ruler ruler--v">
-							<i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
-							<i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
-							<i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i>
-						</div>
-
-						<div class="page">
-							<div class="title">
-								<h1 :text="$page.title"></h1>
-								<div class="band"><span>SPECIAL EDITION</span><span :text="$page.date.format('02/01/2006')"></span>
-								</div>
-							</div>
-							<div class="content" :html="$page.content()"></div>
-						</div>
+					<div class="ruler ruler--v">
+						<i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
+						<i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
+						<i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i>
 					</div>
-				</window-body>
-			</window>
-		</main>
-	</body>
+
+					<div class="page">
+						<div class="title">
+							<h1 :text="$page.title"></h1>
+							<div class="band"><span>SPECIAL EDITION</span><span :text="$page.date.format('02/01/2006')"></span></div>
+						</div>
+						<div class="content" :html="$page.content()"></div>
+					</div>
+				</div>
+			</window-body>
+		</window>
+	</main>
+</body>

@@ -1,4 +1,5 @@
-Site {
+.zine_version = "0.13.0",
+.site = .simple(.{
     .title = "pablo.town",
     .host_url = "https://pablo.town",
     .content_dir_path = "content",
@@ -14,4 +15,5 @@ Site {
         "dithered.png",
         "logo.png",
     ],
-}
+})
+
